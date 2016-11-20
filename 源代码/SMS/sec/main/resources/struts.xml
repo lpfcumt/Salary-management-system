@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="false" />
+	<package name="JMN" extends="json-default" strict-method-invocation="false">
+	
+		<!--用户登陆、注册  -->
+		<action name="check_*" class="cn.JMN.action.UsersAction" method="{1}" >
+			<result name="{1}" type="json">
+			  <param name="root">jsonMap</param>
+			</result>
+		</action>
+		<action name="findPassword1" class="cn.JMN.action.UsersAction" method="findPassword1" >
+			<result name="success" type="json">
+			  <param name="root">jsonMap</param>
+			</result>
+		</action>
+		<action name="user_regist" class="cn.JMN.action.UsersAction" method="regist" >
+			<result name="regist" type="redirect">/login</result>
+		</action>
+		<action name="user_login" class="cn.JMN.action.UsersAction" method="login" >
+			<result name="index" type="chain">listProject</result>
+			<result name="login" type="redirect">/login</result>
+		</action>
+		<action name="user_updatePassword" class="cn.JMN.action.UsersAction" method="updatePassword" >
+			<result name="login" type="redirect">/login</result>
+		</action>
+		<action name="user_findPassword" class="cn.JMN.action.UsersAction" method="findPassword" >
+			<result name="success" type="redirect">/login</result>
+		</action>
+		<action name="updateUsers" class="cn.JMN.action.UsersAction" method="updateUsers" >
+			<result name="success" type="chain">listUsers</result>
+		</action>
+		<action name="adminlogin" class="cn.JMN.action.UsersAction" method="adminLogin" >
+			<result name="success" >/main</result>
+		</action>
+		
+		<!--项目管理 -->
+		<action name="saveProject1" class="cn.JMN.action.ProjectsAction" method="saveProject1">
+             <param name="savePath">/uploadFiles</param>
+            <!-- 限制图片的格式和图片的大小 -->
+            <interceptor-ref name="fileUpload">
+                
+            </interceptor-ref>
+            <!-- 默认的拦截器，必须要写 -->
+            <interceptor-ref name="defaultStack" />
+            <result name="success" type="redirect">/huibao</result>
+           <result name="input" type="redirect">/zhongchou</result>
+            
+        </action>
+        
+        <action name="saveProject2" class="cn.JMN.action.ProjectsAction" method="saveProject2">
+             <param name="savePath">/uploadFiles</param>
+            <!-- 限制图片的格式和图片的大小 -->
+            <interceptor-ref name="fileUpload">
+                
+            </interceptor-ref>
+            <!-- 默认的拦截器，必须要写 -->
+            <interceptor-ref name="defaultStack" />
+            <result name="success" type="redirect">/listMyProject</result>
+            <result name="input" type="redirect">/zhongchou</result>
+            
+        </action>
+        <action name="listProject" class="cn.JMN.action.ProjectsAction" method="listProject" >
+			<result name="success" type="redirect">/index</result>
+		</action>
+		<action name="listProject1" class="cn.JMN.action.ProjectsAction" method="listProject" >
+			<result name="success" type="redirect">/pass</result>
+		</action>
+        <action name="listMyProject" class="cn.JMN.action.ProjectsAction" method="listMyProject" >
+			<result name="success" type="redirect">/index</result>
+		</action>
+		<action name="detailProject" class="cn.JMN.action.ProjectsAction" method="detailProject" >
+			<result name="success" type="redirect">/product-detail</result>
+		</action>
+		<action name="collectProject" class="cn.JMN.action.ProjectsAction" method="collectProject">
+			<result name="success" type="chain">detailProject</result>
+		</action>
+		<action name="supportProject" class="cn.JMN.action.ProjectsAction" method="supportProject">
+			<result name="success" type="chain">detailProject</result>
+		</action>
+		<action name="auditProject" class="cn.JMN.action.ProjectsAction" method="auditProject">
+			<result name="success" type="chain">listWaitProject</result>
+		</action>		
+		<action name="rejectProject" class="cn.JMN.action.ProjectsAction" method="rejectProject">
+			<result name="success" type="chain">listWaitProject</result>
+		</action>		
+		<action name="listFailedProject" class="cn.JMN.action.ProjectsAction" method="listFailedProject">
+			<result name="success" type="redirect">/refuse</result>
+		</action>		
+		<action name="listWaitProject" class="cn.JMN.action.ProjectsAction" method="listWaitProject">
+			<result name="success" type="redirect">/appro</result>
+		</action>
+		<action name="listProjected" class="cn.JMN.action.ProjectsAction" method="listProjected">
+			<result name="success" type="redirect">/finsh</result>
+		</action>
+		<action name="listCollect" class="cn.JMN.action.ProjectsAction" method="listCollect">
+			<result name="success" type="redirect">/4</result>
+		</action>
+		<action name="listSupport" class="cn.JMN.action.ProjectsAction" method="listSupport">
+			<result name="success" type="redirect">/1</result>
+		</action>
+		<action name="listMyProject" class="cn.JMN.action.ProjectsAction" method="listMyProject">
+			<result name="success" type="redirect">/3</result>
+		</action>
+		<action name="searchProject" class="cn.JMN.action.ProjectsAction" method="searchProject">
+			<result name="success" type="redirect">/product-detailzc</result>
+		</action>
+		
+		
+		
+				
+        <!--用户管理 -->
+        <action name="listUsers" class="cn.JMN.action.UsersAction" method="listUsers" >
+			<result name="success" type="redirect">/ge1</result>
+		</action>
+		<action name="listAllUsers" class="cn.JMN.action.UsersAction" method="listAllUsers" >
+			<result name="success" type="redirect">/myuser</result>
+		</action>
+		<action name="*">
+			<result>WEB-INF/content/{1}.jsp</result>
+		</action>	
+		</package>
+	
+	<package name="jmn" extends="struts-default" strict-method-invocation="false">
+				<!-- 验证用户昵称是否唯一 --> 
+		
+	<!-- 	<action name="*">
+			<result>{1}.jsp</result>
+		</action>	 -->
+	</package>
+</struts>
+
