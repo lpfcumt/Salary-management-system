@@ -3,7 +3,7 @@
 ### 1、林鹏飞：数据库构建、后台代码实现；
 ### 2、郭滕：后台管理界面修改；
 ### 3、王晨宇：前端页面（主页及登录页面）、MIS实验报告完善；
-
+### PS：相关源文件已上传
 ## 二、进展情况
 ### 1.前台页面基本完成；
 <img src="https://github.com/lpfcumt/Salary-management-system/blob/master/%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2.JPG">
