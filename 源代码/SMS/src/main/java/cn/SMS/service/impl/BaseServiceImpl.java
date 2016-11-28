@@ -1,4 +1,4 @@
-package cn.JMN.service.impl;
+package cn.SMS.service.Impl;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -10,14 +10,10 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import cn.JMN.dao.BaseDao;
+import cn.SMS.service.BaseService;
+import cn.SMS.dao.*;;
 
-import cn.JMN.dao.ProjectsDao;
-import cn.JMN.dao.UsersDao;
-import cn.JMN.model.CollectProject;
-import cn.JMN.model.ProjectsRepay;
-import cn.JMN.model.SupportProject;
-import cn.JMN.service.BaseService;
+
 @SuppressWarnings("unchecked")
 @Service("baseService")
 @Lazy(true)
@@ -44,11 +40,35 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		baseField.set(this,clazzField.get(this));
 	}
 
-
+/*
 	@Resource(name="usersDao")
 	protected UsersDao usersDao;
 	@Resource(name="usersprojectDao")
 	protected ProjectsDao usersprojectDao;
+	*/
+	@Resource(name="adminDao")
+	protected AdminDao adminDao;
+	@Resource(name="assistanceDao")
+	protected AssistanceDao assistancedao;
+	@Resource(name="assistanceSumDao")
+	protected AssistanceSumDao assistanceSumDao;
+	@Resource(name="attendanceDao")
+	protected AttendanceDao attendanceDao;
+	@Resource(name="baseSalaryDao")
+	protected BaseSalaryDao baseSalaryDao;
+	@Resource(name="departmentDao")
+	protected DepartmentDao departmentDao;
+	@Resource(name="jobDao")
+	protected JobDao jobDao;
+	@Resource(name="rewardDao")
+	protected RewardDao rewardDao;
+	@Resource(name="staffDao")
+	protected StaffDao staffDao;
+	@Resource(name="totalSalaryDao")
+	protected TotalSalaryDao totalSalaryDao;
+	@Resource(name="wageSumDao")
+	protected WageSumDao wageSumDao;
+	
 	
 	@Override
 	public void save(T t) {
@@ -91,6 +111,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		return (Long)baseDao.count(hql);
 	}
 
+	/*
 	@Override
 	public void save1(ProjectsRepay t) {
 		// TODO Auto-generated method stub
@@ -107,5 +128,5 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	public void save4(SupportProject t) {
 		// TODO Auto-generated method stub
 		baseDao.save(t);
-	}	
+	}	*/
 }

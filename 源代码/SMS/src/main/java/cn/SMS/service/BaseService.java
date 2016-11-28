@@ -1,10 +1,7 @@
-package cn.JMN.service;
+package cn.SMS.service;
 
 import java.util.List;
 
-import cn.JMN.model.CollectProject;
-import cn.JMN.model.ProjectsRepay;
-import cn.JMN.model.SupportProject;
 
 public interface BaseService<T>{
 	void save(T t);
@@ -23,9 +20,10 @@ public interface BaseService<T>{
 	//²éÑ¯×ÜÊý
 	long count(String hql);
 	
+	/*
 	public void save1(ProjectsRepay t);
 	
 	void save3(CollectProject t);
 	
-	void save4(SupportProject t);
+	void save4(SupportProject t);*/
 }

@@ -2,10 +2,6 @@ package cn.SMS.dao;
 
 import java.util.List;
 
-import cn.SMS.model.CollectProject;
-import cn.JMN.model.ProjectsRepay;
-import cn.JMN.model.SupportProject;
-
 public interface BaseDao<T>{
 
 	void save(T t);
@@ -26,9 +22,9 @@ public interface BaseDao<T>{
 	//根据条件查询
 	List<T> findByHql(String hql);
 
-	void save1(ProjectsRepay t);
+	/*void save1(ProjectsRepay t);
 	
 	void save3(CollectProject t);
 	
-	void save4(SupportProject t);
+	void save4(SupportProject t);*/
 }

@@ -13,18 +13,52 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 
-import cn.JMN.service.ProjectsService;
-import cn.JMN.service.UsersService;
+import cn.SMS.service.AdminService;
+import cn.SMS.service.AssistanceService;
+import cn.SMS.service.AssistanceSumService;
+import cn.SMS.service.AttendanceService;
+import cn.SMS.service.BaseSalaryService;
+import cn.SMS.service.DepartmentService;
+import cn.SMS.service.JobService;
+import cn.SMS.service.RewardService;
+import cn.SMS.service.StaffService;
+import cn.SMS.service.TotalSalaryService;
+import cn.SMS.service.WageSumService;
+
+
 
 
 public class BaseAction<T> extends ActionSupport implements RequestAware,SessionAware, ApplicationAware,ModelDriven<T>{
 	private static final long serialVersionUID = 1L;
 	//注入service
 
-	@Resource(name="usersService")
+	/*@Resource(name="usersService")
 	protected UsersService usersService;
 	@Resource(name="usersprojectService")
-	protected ProjectsService projectsService;
+	protected ProjectsService projectsService;*/
+	
+	@Resource(name="adminService")
+	protected AdminService adminService;
+	@Resource(name="assistanceService")
+	protected AssistanceService assistanceService;
+	@Resource(name="assistanceSumService")
+	protected AssistanceSumService assistanceSumService;
+	@Resource(name="attendanceService")
+	protected AttendanceService attendanceService;
+	@Resource(name="baseSalaryService")
+	protected BaseSalaryService baseSalaryService;
+	@Resource(name="departmentService")
+	protected DepartmentService departmentService;
+	@Resource(name="jobService")
+	protected JobService jobService;
+	@Resource(name="rewardService")
+	protected RewardService rewardService;
+	@Resource(name="staffService")
+	protected StaffService staffService;
+	@Resource(name="totalSalaryService")
+	protected TotalSalaryService totalSalaryService;
+	@Resource(name="wageSumService")
+	protected WageSumService wageSumService;
 	
 	//在调用构造方法的时候给model赋值
 	protected T model;

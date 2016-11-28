@@ -1,4 +1,4 @@
-package cn.JMN.dao.impl;
+package cn.SMS.dao.Impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -11,10 +11,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
-import cn.JMN.dao.BaseDao;
-import cn.JMN.model.CollectProject;
-import cn.JMN.model.ProjectsRepay;
-import cn.JMN.model.SupportProject;
+import cn.SMS.dao.BaseDao;
+
 @SuppressWarnings("unchecked")
 @Repository("baseDao")
 @Lazy(true)
@@ -45,10 +43,11 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		getSession().save(t);		
 	}
 	
+	/*
 	@Override
 	public void save1(ProjectsRepay t) {
 		getSession().save(t);		
-	}
+	}*/
 	//¸üÐÂ
 	@Override
 	public void update(T t) {
@@ -101,8 +100,15 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public void delete(T t) {
 		getSession().delete(t);
 	}
+	@Override
+	public List<T> findByHql(String hql) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	@SuppressWarnings("deprecation")
+	/*
+	@SuppressWarnings("deprecation") 
+	/*
 	@Override
 	public List<T> findByHql(String hql) {
 		return (List<T>) this.getSession().createQuery(hql).getResultList();
@@ -116,5 +122,5 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public void save4(SupportProject t) {
 		// TODO Auto-generated method stub
 		getSession().save(t);
-	}
+	}*/
 }
