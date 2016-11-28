@@ -6,10 +6,13 @@
 
 ## 二、进展情况
 ### 1.前台页面基本完成；
+<img src="https://github.com/lpfcumt/Salary-management-system/blob/master/%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2.JPG">
+<img src="https://github.com/lpfcumt/Salary-management-system/blob/master/%E9%A6%96%E9%A1%B5.JPG">
 ### 2.完成数据库构建；
 ### 3.后台管理页面不断完善；
-
-
+## 三、目前事项
+### 1.eclipse中前台与代码层的连接与功能测试、修改、实现；
+### 2.后台管理界面完善后准备与代码层对接；
 # 第一周进度报告
 ## 一、确定选题
 ### 确定小组项目选题：工资管理系统
