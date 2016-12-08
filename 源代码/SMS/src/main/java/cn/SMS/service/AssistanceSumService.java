@@ -1,7 +1,7 @@
 package cn.SMS.service;
 
-import cn.SMS.model.AssistanceSum;
+import cn.SMS.model.Assistancesum;
 
-public interface AssistanceSumService extends BaseService<AssistanceSum> {
+public interface AssistancesumService extends BaseService<Assistancesum> {
 
 }

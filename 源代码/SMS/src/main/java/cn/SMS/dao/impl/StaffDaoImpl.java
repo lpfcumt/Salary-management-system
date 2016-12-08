@@ -1,4 +1,4 @@
-package cn.SMS.dao.Impl;
+package cn.SMS.dao.impl;
 
 import java.util.List;
 
@@ -14,6 +14,13 @@ public class StaffDaoImpl extends BaseDaoImpl<Staff> implements StaffDao{
 	public List<Staff> Query(String staffname, String tel) {
 		// TODO Auto-generated method stub
 		return findByHql("from staff where staffname='"+staffname+"' and tel='"+tel+"'");
+	}
+
+	@Override
+	public List<Staff> queryById(int sid) {
+		// TODO Auto-generated method stub
+		
+		return findByHql("from staff where sid='"+sid+"'");
 	}
 
 }

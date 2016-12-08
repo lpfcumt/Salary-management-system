@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface BaseService<T>{
 	void save(T t);
+	
+	
 
 	void update(T t);
 	// É¾³ıÊµÌå

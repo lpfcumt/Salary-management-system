@@ -63,7 +63,7 @@
 		<div class="login-content">
 			
 			<div class="form">
-				<form action="CheckStaff" method="post" id="myform">
+				<form action="loginStaff" method="post" id="myform">
 					<div class="form-group">
 						<div class="col-xs-12  ">
 							<div class="input-group">
@@ -76,7 +76,7 @@
 						<div class="col-xs-12  ">
 							<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							<input type="text" id="password" name="password" class="form-control" placeholder="密码">
+							<input type="password" id="password" name="password" class="form-control" placeholder="密码">
 							</div>
 						</div>
 					</div>
@@ -107,12 +107,14 @@
   <script>
 
 function checkForm(){
-	var staffname=$(".username").val();
-	var tel=$(".password").val();
+	var username=$("#username").val();
+	var password=$("#password").val();
+	
+	
 	$.ajax({
-		   url:'CheckStaff',// 跳转到 action  
+		   url:'aa',// 跳转到 action  
 		   data:{  
-	    		staffname : staffname,tel : tel  
+	    		username : username,password : password  
 		    }, 
 		    type:'post',  
 		    cache:false,  
@@ -124,12 +126,17 @@ function checkForm(){
 		    		 return false;
 		    	}
 		    	else{
+		    		
+		    		
+		    		
 		    		$("#myform").submit();
-			    	return true;}
+			    	return true;
+			    	}
 		     }
 		   
 	});
-	return false
+	return false;
+	
 };
 
 </script>

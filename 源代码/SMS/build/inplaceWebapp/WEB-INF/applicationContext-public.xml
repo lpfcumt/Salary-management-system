@@ -35,15 +35,15 @@
 			<list>
 				<value>cn.SMS.model.Staff</value>
 				<value>cn.SMS.model.Admin</value>
-				<value>cn.SMS.model.AssistanceSum</value>
+				<value>cn.SMS.model.Assistancesum</value>
 				<value>cn.SMS.model.Assistance</value>
 				<value>cn.SMS.model.Attendance</value>
-				<value>cn.SMS.model.BaseSalary</value>
+				<value>cn.SMS.model.Basesalary</value>
 				<value>cn.SMS.model.Department</value>
 				<value>cn.SMS.model.Job</value>
 				<value>cn.SMS.model.Reward</value>
-				<value>cn.SMS.model.TotalSalary</value>
-				<value>cn.SMS.model.WageSum</value>
+				<value>cn.SMS.model.Totalsalary</value>
+				<value>cn.SMS.model.Wagesum</value>
 				<!--  
 				<value>cn.JMN.model.Users</value>
 				<value>cn.JMN.model.Usersproject</value>
@@ -68,8 +68,6 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	<!-- 配置事物管理 -->
-	 <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 	
 	<!-- 配置通知, 那些方法需要切入什么类型的事务 -->	
 	<tx:advice id="advice" transaction-manager="transactionManager">
@@ -79,7 +77,7 @@
 			<tx:method name="save*" propagation="REQUIRED"/>
 			<tx:method name="update*" propagation="REQUIRED"/>
 			<tx:method name="delete*" propagation="REQUIRED"/>
-			<tx:method name="*" propagation="SUPPORTS"/>
+			<tx:method name="*" propagation="REQUIRED"/>
 		</tx:attributes>
 	</tx:advice>
 	
@@ -87,7 +85,7 @@
 	<!-- 配置切面表达式, 并且让 tx与切面表达式合二为一 -->
 	<aop:config>
 		<!-- 表达式, 定义哪个包的哪些类需要切入事务,但是此处并且没有制定类中哪些方法,需要切入什么样 事务 -->
-		<aop:pointcut expression="execution(* cn.it.service.serviceImpl.*.*(..))" id="pointcut"/>
+		<aop:pointcut expression="execution(* cn.SMS.service.*.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
 	</aop:config>
 </beans>

@@ -1,11 +1,11 @@
-package cn.SMS.dao.Impl;
+package cn.SMS.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import cn.SMS.dao.AssistanceSumDao;
-import cn.SMS.model.AssistanceSum;
+import cn.SMS.dao.AssistancesumDao;
+import cn.SMS.model.Assistancesum;
 
-@Repository("assistanceSumDao")
-public class AssistanceSumDaoImpl extends BaseDaoImpl<AssistanceSum> implements AssistanceSumDao{
+@Repository("assistancesumDao")
+public class AssistancesumDaoImpl extends BaseDaoImpl<Assistancesum> implements AssistancesumDao{
 
 }

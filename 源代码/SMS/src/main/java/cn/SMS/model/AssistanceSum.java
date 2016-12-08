@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity(name="AssistanceSum")
 @Table(name="AssistanceSum")
-public class AssistanceSum {
+public class Assistancesum {
 	private int asid;
 	private String assistancesumname;
 	private Double assistancesum;

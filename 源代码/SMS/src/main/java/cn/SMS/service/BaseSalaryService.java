@@ -1,7 +1,11 @@
 package cn.SMS.service;
 
-import cn.SMS.model.BaseSalary;
+import java.util.List;
 
-public interface BaseSalaryService extends BaseService<BaseSalary> {
+import cn.SMS.model.Basesalary;
+
+public interface BasesalaryService extends BaseService<Basesalary> {
+
+	List<Basesalary> listCate();
 
 }

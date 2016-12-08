@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity(name="totalsalary")
 @Table(name="totalsalary")
-public class TotalSalary {
+public class Totalsalary {
 	private int tid;
 	private Date time;
 	private int sid;

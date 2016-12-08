@@ -1,11 +1,11 @@
-package cn.SMS.dao.Impl;
+package cn.SMS.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import cn.SMS.dao.TotalSalaryDao;
-import cn.SMS.model.TotalSalary;
+import cn.SMS.dao.TotalsalaryDao;
+import cn.SMS.model.Totalsalary;
 
-@Repository("totalSalaryDao")
-public class TotalSalaryDaoImpl extends BaseDaoImpl<TotalSalary> implements TotalSalaryDao{
+@Repository("totalsalaryDao")
+public class TotalsalaryDaoImpl extends BaseDaoImpl<Totalsalary> implements TotalsalaryDao{
 
 }

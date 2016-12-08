@@ -1,15 +1,26 @@
-package cn.SMS.service.Impl;
+package cn.SMS.service.impl;
 
-import org.springframework.context.annotation.Lazy;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import cn.SMS.model.Attendance;
 import cn.SMS.service.AttendanceService;
 
-@Transactional
-@Lazy(true)
+
 @Service("attendanceService")
 public class AttendanceServiceImpl extends BaseServiceImpl<Attendance> implements AttendanceService{
 
+	@Override
+	public List<Attendance> queryById(int sid) {
+		// TODO Auto-generated method stub
+		return attendanceDao.queryById(sid);
+	}
+
+	@Override
+	public List<Attendance> queryByTime(Date time) {
+		// TODO Auto-generated method stub
+		return attendanceDao.queryByTime(time);
+	}
+	
 }

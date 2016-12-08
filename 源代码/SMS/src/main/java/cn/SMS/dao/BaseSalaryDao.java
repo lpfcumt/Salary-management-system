@@ -1,7 +1,11 @@
 package cn.SMS.dao;
 
-import cn.SMS.model.BaseSalary;
+import java.util.List;
 
-public interface BaseSalaryDao extends BaseDao<BaseSalary>{
+import cn.SMS.model.Basesalary;
+
+public interface BasesalaryDao extends BaseDao<Basesalary>{
+
+	List<Basesalary> listCate();
 
 }

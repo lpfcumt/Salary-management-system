@@ -59,7 +59,7 @@ public class Staff {
 		this.age = age;
 	}
 	
-	@Column(updatable=false,nullable=false)
+	@Column(nullable=false)
 	public Date getBirthday() {
 		return birthday;
 	}

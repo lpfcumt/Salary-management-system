@@ -1,4 +1,4 @@
-package cn.SMS.service.Impl;
+package cn.SMS.service.impl;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -9,11 +9,12 @@ import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.SMS.service.BaseService;
 import cn.SMS.dao.*;;
 
-
+@Transactional
 @SuppressWarnings("unchecked")
 @Service("baseService")
 @Lazy(true)
@@ -49,13 +50,13 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	@Resource(name="adminDao")
 	protected AdminDao adminDao;
 	@Resource(name="assistanceDao")
-	protected AssistanceDao assistancedao;
-	@Resource(name="assistanceSumDao")
-	protected AssistanceSumDao assistanceSumDao;
+	protected AssistanceDao assistanceDao;
+	@Resource(name="assistancesumDao")
+	protected AssistancesumDao assistancesumDao;
 	@Resource(name="attendanceDao")
 	protected AttendanceDao attendanceDao;
-	@Resource(name="baseSalaryDao")
-	protected BaseSalaryDao baseSalaryDao;
+	@Resource(name="basesalaryDao")
+	protected BasesalaryDao basesalaryDao;
 	@Resource(name="departmentDao")
 	protected DepartmentDao departmentDao;
 	@Resource(name="jobDao")
@@ -64,11 +65,10 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	protected RewardDao rewardDao;
 	@Resource(name="staffDao")
 	protected StaffDao staffDao;
-	@Resource(name="totalSalaryDao")
-	protected TotalSalaryDao totalSalaryDao;
-	@Resource(name="wageSumDao")
-	protected WageSumDao wageSumDao;
-	
+	@Resource(name="totalsalaryDao")
+	protected TotalsalaryDao totalsalaryDao;
+	@Resource(name="wagesumDao")
+	protected WagesumDao wagesumDao;
 	
 	@Override
 	public void save(T t) {
@@ -110,6 +110,8 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 		// TODO Auto-generated method stub
 		return (Long)baseDao.count(hql);
 	}
+
+
 
 	/*
 	@Override

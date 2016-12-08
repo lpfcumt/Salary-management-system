@@ -1,4 +1,4 @@
-package cn.SMS.dao.Impl;
+package cn.SMS.dao.impl;
 
 import org.springframework.stereotype.Repository;
 

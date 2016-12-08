@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity(name="basesalary")
 @Table(name="basesalary")
-public class BaseSalary {
+public class Basesalary {
 	private int bid;
 	private String basesalarycate;
 	private Double basesalarysum;

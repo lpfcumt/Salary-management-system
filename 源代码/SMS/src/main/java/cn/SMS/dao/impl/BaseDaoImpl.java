@@ -1,4 +1,4 @@
-package cn.SMS.dao.Impl;
+package cn.SMS.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -103,7 +103,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> findByHql(String hql) {
 		// TODO Auto-generated method stub
-		return null;
+		return (List<T>) this.getSession().createQuery(hql).getResultList();
 	}
 	
 	/*

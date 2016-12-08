@@ -1,15 +1,19 @@
-package cn.SMS.service.Impl;
+package cn.SMS.service.impl;
 
-import org.springframework.context.annotation.Lazy;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import cn.SMS.model.Basesalary;
+import cn.SMS.service.BasesalaryService;
 
-import cn.SMS.model.BaseSalary;
-import cn.SMS.service.BaseSalaryService;
 
-@Transactional
-@Lazy(true)
-@Service("baseSalaryService")
-public class BaseSalaryServiceImpl extends BaseServiceImpl<BaseSalary> implements BaseSalaryService{
+@Service("basesalaryService")
+public class BasesalaryServiceImpl extends BaseServiceImpl<Basesalary> implements BasesalaryService{
+
+	@Override
+	public List<Basesalary> listCate() {
+		// TODO Auto-generated method stub
+		return basesalaryDao.listCate();
+	}
 
 }

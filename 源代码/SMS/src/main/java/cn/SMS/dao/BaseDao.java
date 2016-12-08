@@ -2,6 +2,8 @@ package cn.SMS.dao;
 
 import java.util.List;
 
+import cn.SMS.model.Basesalary;
+
 public interface BaseDao<T>{
 
 	void save(T t);
@@ -15,12 +17,16 @@ public interface BaseDao<T>{
 	List<T> query();
 	//根据ID加载实体
 	T get(int id);
+	
+
 	//分页
 	List<T> findByPage(String hql,int page,int rows);
 	//查询总数
 	long count(String hql);
 	//根据条件查询
 	List<T> findByHql(String hql);
+
+	
 
 	/*void save1(ProjectsRepay t);
 	

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity(name="wagesum")
 @Table(name="wagesum")
-public class WageSum {
+public class Wagesum {
 	private int wage;
 	private Double wagesum;
 	

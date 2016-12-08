@@ -15,15 +15,15 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import cn.SMS.service.AdminService;
 import cn.SMS.service.AssistanceService;
-import cn.SMS.service.AssistanceSumService;
+import cn.SMS.service.AssistancesumService;
 import cn.SMS.service.AttendanceService;
-import cn.SMS.service.BaseSalaryService;
+import cn.SMS.service.BasesalaryService;
 import cn.SMS.service.DepartmentService;
 import cn.SMS.service.JobService;
 import cn.SMS.service.RewardService;
 import cn.SMS.service.StaffService;
-import cn.SMS.service.TotalSalaryService;
-import cn.SMS.service.WageSumService;
+import cn.SMS.service.TotalsalaryService;
+import cn.SMS.service.WagesumService;
 
 
 
@@ -39,27 +39,26 @@ public class BaseAction<T> extends ActionSupport implements RequestAware,Session
 	
 	@Resource(name="adminService")
 	protected AdminService adminService;
-	@Resource(name="assistanceService")
+	@Resource
 	protected AssistanceService assistanceService;
-	@Resource(name="assistanceSumService")
-	protected AssistanceSumService assistanceSumService;
+	@Resource(name="assistancesumService")
+	protected AssistancesumService assistancesumService;
 	@Resource(name="attendanceService")
 	protected AttendanceService attendanceService;
-	@Resource(name="baseSalaryService")
-	protected BaseSalaryService baseSalaryService;
+	@Resource(name="basesalaryService")
+	protected BasesalaryService basesalaryService;
 	@Resource(name="departmentService")
 	protected DepartmentService departmentService;
 	@Resource(name="jobService")
 	protected JobService jobService;
 	@Resource(name="rewardService")
 	protected RewardService rewardService;
-	@Resource(name="staffService")
+	@Resource
 	protected StaffService staffService;
-	@Resource(name="totalSalaryService")
-	protected TotalSalaryService totalSalaryService;
-	@Resource(name="wageSumService")
-	protected WageSumService wageSumService;
-	
+	@Resource(name="totalsalaryService")
+	protected TotalsalaryService totalsalaryService;
+	@Resource
+	protected WagesumService wagesumService;
 	//在调用构造方法的时候给model赋值
 	protected T model;
 	public BaseAction() {

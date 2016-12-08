@@ -1,15 +1,11 @@
-package cn.SMS.service.Impl;
+package cn.SMS.service.impl;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import cn.SMS.model.Totalsalary;
+import cn.SMS.service.TotalsalaryService;
 
-import cn.SMS.model.TotalSalary;
-import cn.SMS.service.TotalSalaryService;
 
-@Transactional
-@Lazy(true)
-@Service("totalSalaryService")
-public class TotalSalaryServiceImpl extends BaseServiceImpl<TotalSalary> implements TotalSalaryService{
+@Service("totalsalaryService")
+public class TotalsalaryServiceImpl extends BaseServiceImpl<Totalsalary> implements TotalsalaryService{
 
 }

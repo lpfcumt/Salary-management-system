@@ -1,7 +1,7 @@
 package cn.SMS.dao;
 
-import cn.SMS.model.TotalSalary;
+import cn.SMS.model.Totalsalary;
 
-public interface TotalSalaryDao extends BaseDao<TotalSalary>{
+public interface TotalsalaryDao extends BaseDao<Totalsalary>{
 
 }

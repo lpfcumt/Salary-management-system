@@ -1,7 +1,7 @@
 package cn.SMS.service;
 
-import cn.SMS.model.WageSum;
+import cn.SMS.model.Wagesum;
 
-public interface WageSumService extends BaseService<WageSum>{
+public interface WagesumService extends BaseService<Wagesum>{
 
 }

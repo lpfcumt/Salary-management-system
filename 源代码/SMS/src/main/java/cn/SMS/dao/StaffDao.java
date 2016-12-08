@@ -8,4 +8,6 @@ public interface StaffDao extends BaseDao<Staff>{
 
 	List<Staff> Query(String staffname, String tel);
 
+	List<Staff> queryById(int sid);
+
 }
