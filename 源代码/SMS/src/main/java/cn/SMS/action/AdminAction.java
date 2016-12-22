@@ -1,6 +1,7 @@
 package cn.SMS.action;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.SMS.model.Admin;
@@ -61,7 +62,10 @@ public class AdminAction extends BaseAction<Admin>{
 	/*π‹¿Ì‘±µ«¬º*/
 	public String loginAdmin() throws Exception{
 		String adminname=this.getUsername();
+		String password=this.getPassword();
+		Admin admin=adminService.Query(adminname,password);
 		session.put("adminname",adminname);
+		session.put("adminid", admin.getAdminid());
 		return SUCCESS;
 	}
 }

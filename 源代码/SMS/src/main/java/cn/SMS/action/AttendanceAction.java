@@ -1,7 +1,6 @@
 package cn.SMS.action;
 
-import java.util.Date;
-
+import java.util.Calendar;
 import cn.SMS.model.Attendance;
 
 @SuppressWarnings("serial")
@@ -9,6 +8,15 @@ public class AttendanceAction extends BaseAction<Attendance>{
 
 	/*添加考勤*/
 	public String addAttendance() throws Exception{
+		Calendar a=Calendar.getInstance();
+		String time=a.getCalendarType();
+		int year=a.get(Calendar.YEAR);
+		int month=a.get(Calendar.MONTH)+1;
+		String status="已考核";
+		model.setTime(time);
+		model.setYear(year);
+		model.setMonth(month);
+		model.setStatus(status);
 		attendanceService.save(model);
 		return SUCCESS;
 	}
@@ -33,8 +41,10 @@ public class AttendanceAction extends BaseAction<Attendance>{
 	
 	/*根据时间查询考勤*/
 	public String listAdByTime() throws Exception{
-		Date time=new Date();
-		session.put("listadbytime", attendanceService.queryByTime(time));
+		
+		session.put("listadbytime", attendanceService.queryByTime(model.getYear(),model.getMonth()));
 		return SUCCESS;
 	}
+	
+	/*根据年份、员工编号查询考勤*/
 }

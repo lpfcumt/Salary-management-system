@@ -15,16 +15,16 @@ public class Staff {
 	private String staffname;
 	private String sex;
 	private int age;
-	private Date birthday;
+	private String birthday;
 	private String tel;
 	private String email;
 	private String address;
 	private String dept;
 	private String job;
-	private double wage;
+
 	private String basesalarycate;
-	private Date jointime;
-	private String image;
+	private String jointime;
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -51,7 +51,7 @@ public class Staff {
 		this.sex = sex;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public int getAge() {
 		return age;
 	}
@@ -60,10 +60,10 @@ public class Staff {
 	}
 	
 	@Column(nullable=false)
-	public Date getBirthday() {
+	public String  getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String  birthday) {
 		this.birthday = birthday;
 	}
 	
@@ -107,14 +107,7 @@ public class Staff {
 		this.job = job;
 	}
 	
-	@Column(nullable=false)
-	public double getWage() {
-		return wage;
-	}
-	public void setWage(double wage) {
-		this.wage = wage;
-	}
-	
+
 	@Column(nullable=false)
 	public String getBasesalarycate() {
 		return basesalarycate;
@@ -124,20 +117,13 @@ public class Staff {
 	}
 	
 	@Column(nullable=false)
-	public Date getJointime() {
+	public String  getJointime() {
 		return jointime;
 	}
-	public void setJointime(Date jointime) {
+	public void setJointime(String jointime) {
 		this.jointime = jointime;
 	}
 	
-	@Column(nullable=false)
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	
+
 	
 }

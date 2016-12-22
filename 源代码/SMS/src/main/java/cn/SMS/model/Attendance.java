@@ -9,11 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.common.util.StringHelper;
+
 @Entity(name="attendance")
 @Table(name="attendance")
 public class Attendance {
 	private  int adid;
-	private Date time;
+	private int year;
+	private int month;
 	private int sid;
 	private String staffname;
 	private Double shulddays;
@@ -23,6 +26,8 @@ public class Attendance {
 	private Double deduction2;
 	private Double leavetimes;
 	private Double deduction3;
+	private String status;
+	private String time;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,14 +38,21 @@ public class Attendance {
 		this.adid = adid;
 	}
 	
+
 	@Column(nullable=false)
-	public Date getTime() {
-		return time;
+	public int getYear() {
+		return year;
 	}
-	public void setTime(Date time) {
-		this.time = time;
+	public void setYear(int year) {
+		this.year = year;
 	}
-	
+	@Column(nullable=false)
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
 	@Column(nullable=false)
 	public int getSid() {
 		return sid;
@@ -111,6 +123,20 @@ public class Attendance {
 	}
 	public void setDeduction3(Double deduction3) {
 		this.deduction3 = deduction3;
+	}
+	@Column(nullable=false)
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	@Column(nullable=false)
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 }

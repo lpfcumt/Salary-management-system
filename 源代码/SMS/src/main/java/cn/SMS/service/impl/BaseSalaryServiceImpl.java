@@ -10,10 +10,18 @@ import cn.SMS.service.BasesalaryService;
 @Service("basesalaryService")
 public class BasesalaryServiceImpl extends BaseServiceImpl<Basesalary> implements BasesalaryService{
 
+	
+
 	@Override
 	public List<Basesalary> listCate() {
 		// TODO Auto-generated method stub
 		return basesalaryDao.listCate();
+	}
+
+	@Override
+	public List<Basesalary> listSum(String basesalarycate) {
+		// TODO Auto-generated method stub
+		return basesalaryDao.listSum(basesalarycate);
 	}
 
 }

@@ -1,7 +1,5 @@
 package cn.SMS.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +11,8 @@ import javax.persistence.Table;
 @Table(name="totalsalary")
 public class Totalsalary {
 	private int tid;
-	private Date time;
+	private int year;
+	private int month;
 	private int sid;
 	private String satffname;
 	private Double basesalarysum;
@@ -24,10 +23,11 @@ public class Totalsalary {
 	private Double deductionsum;
 	private Double totalsum;
 	private Double realsum;
-	private int aid;
-	private Date times;
+	private String adminname;
+	private String times;
 	private String tip;
 	private String status;
+	private String department;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,17 +39,25 @@ public class Totalsalary {
 	}
 	
 	@Column( nullable=false)
-	public Date getTime() {
-		return time;
+	public int getYear() {
+		return year;
 	}
-	public void setTime(Date time) {
-		this.time = time;
+	public void setYear(int year) {
+		this.year = year;
+	}
+	@Column( nullable=false)
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
 	}
 	
 	@Column( nullable=false)
 	public int getSid() {
 		return sid;
 	}
+	
 	public void setSid(int sid) {
 		this.sid = sid;
 	}
@@ -127,18 +135,19 @@ public class Totalsalary {
 	}
 	
 	@Column( nullable=false)
-	public int getAid() {
-		return aid;
+	public String getAdminname() {
+		return adminname;
 	}
-	public void setAid(int aid) {
-		this.aid = aid;
+	public void setAdminname(String adminname) {
+		this.adminname = adminname;
 	}
 	
 	@Column( nullable=false)
-	public Date getTimes() {
+	public String  getTimes() {
 		return times;
 	}
-	public void setTimes(Date times) {
+	
+	public void setTimes(String times) {
 		this.times = times;
 	}
 	
@@ -156,6 +165,14 @@ public class Totalsalary {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	@Column
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 	

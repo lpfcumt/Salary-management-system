@@ -32,4 +32,10 @@ public class JobAction extends BaseAction<Job>{
 		jobService.delete(model.getJid());
 		return SUCCESS;
 	}
+	
+	/*输出某个职位工资*/
+	public String listJobsum() throws Exception{
+		session.put("listjobsum", jobService.listJobsum(model.getJobname()));
+		return SUCCESS;
+	}
 }

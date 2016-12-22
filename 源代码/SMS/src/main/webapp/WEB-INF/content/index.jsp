@@ -1,118 +1,193 @@
-<%@ page contentType="text/html; charset=utf-8" language="java"
-	errorPage=""%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后��? -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>	
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    
-    
-<title>登录页面</title>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="css/icon.css" />
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jQuery.easyui.js"></script>
+	<script type="text/javascript" src='js/outlook2.js'> </script>
+    <script type="text/javascript">
+	 var _menus = {"menus":[
+						{"menuid":"1","icon":"icon-sys","menuname":"员工管理",
+							"menus":[{"menuname":"员工列表","icon":"icon-add","url":"stafflist"}
+								]
+						},{"menuid":"8","icon":"icon-sys","menuname":"工资设定-固定工资",
+							"menus":[{"menuname":"基本工资","icon":"icon-nav","url":"base"},
+									{"menuname":"岗位工资","icon":"icon-nav","url":"job"},
+                                    {"menuname":"技能工资","icon":"icon-nav","url":"skill"},
+                                    {"menuname":"工龄工资","icon":"icon-nav","url":"worktime"}
+								]
+						},{"menuid":"56","icon":"icon-sys","menuname":"工资设定-浮动工资",
+							"menus":[{"menuname":"效益工资","icon":"icon-nav","url":"xiaoyi"},
+									{"menuname":"业绩工资","icon":"icon-nav","url":"yeji"},
+                                    {"menuname":"奖金","icon":"icon-nav","url":"bonus"},
+                                    {"menuname":"补贴","icon":"icon-nav","url":"butie"}
+								]
+						},{"menuid":"28","icon":"icon-sys","menuname":"工资设定-特殊薪资制",
+							"menus":[{"menuname":"日薪制","icon":"icon-nav","url":"day"},
+									{"menuname":"计时工资制","icon":"icon-nav","url":"time"},
+									{"menuname":"计件工资制","icon":"icon-nav","url":"number"}
+								]
+						},{"menuid":"39","icon":"icon-sys","menuname":"考核管理",
+							"menus":[{"menuname":"本月已考核人员","icon":"icon-nav","url":"checked"},
+								{"menuname":"本月未考核人员","icon":"icon-nav","url":"check"},
+								{"menuname":"查询考核记录","icon":"icon-nav","url":"adminkaoqin"},
+								]
+						},{"menuid":"38","icon":"icon-sys","menuname":"工资管理-工资报告",
+							"menus":[{"menuname":"查看工资信息","icon":"icon-nav","url":"allsalory"},
+								]
+						},{"menuid":"19","icon":"icon-sys","menuname":"工资管理-工资结算",
+							"menus":[{"menuname":"结算当月工资","icon":"icon-nav","url":"balance"},
+								 {"menuname":"当月已发放工资","icon":"icon-nav","url":"balanced"},
+								]
+						}
+				]};
+        //设置登录窗口
+        function openPwd() {
+            $('#w').window({
+                title: '修改密码',
+                width: 300,
+                modal: true,
+                shadow: true,
+                closed: true,
+                height: 160,
+                resizable:false
+            });
+        }
+        //关闭登录窗口
+        function close() {
+            $('#w').window('close');
+        }
+
+        
+
+        //修改密码
+        function serverLogin() {
+            var $newpass = $('#txtNewPass');
+            var $rePass = $('#txtRePass');
+
+            if ($newpass.val() == '') {
+                msgShow('系统提示', '请输入密码！', 'warning');
+                return false;
+            }
+            if ($rePass.val() == '') {
+                msgShow('系统提示', '请在一次输入密码！', 'warning');
+                return false;
+            }
+
+            if ($newpass.val() != $rePass.val()) {
+                msgShow('系统提示', '两次密码不一至！请重新输入', 'warning');
+                return false;
+            }
+
+            $.post('/ajax/editpassword.ashx?newpass=' + $newpass.val(), function(msg) {
+                msgShow('系统提示', '恭喜，密码修改成功！<br>您的新密码为：' + msg, 'info');
+                $newpass.val('');
+                $rePass.val('');
+                close();
+            })
+            
+        }
+
+        $(function() {
+
+            openPwd();
+            //
+            $('#editpass').click(function() {
+                $('#w').window('open');
+            });
+
+            $('#btnEp').click(function() {
+                serverLogin();
+            })
+
+           
+
+            $('#loginOut').click(function() {
+                $.messager.confirm('系统提示', '您确定要退出本次登录吗?', function(r) {
+
+                    if (r) {
+                        location.href = '/ajax/loginout.ashx';
+                    }
+                });
+
+            })
+			
+			
+			
+        });
+		
+		
+
+    </script>
 
 </head>
-
-<body>
-
- <!--  顶部导航 -->   
-		<div class="row">
-		<div class="col-md-12">
-			<nav class="navbar navbar-default navbar-static-top" role="navigation">
-				<div class="navbar-header">
-					 
-					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="#">Brand</a>
-				</div>
+<body class="easyui-layout" style="overflow-y: hidden"  scroll="no">
+    <noscript>
+       <div style=" position:absolute; z-index:100000; height:2046px;top:0px;left:0px; width:100%; background:white; text-align:center;">
+         <img src="images/noscript.gif" alt='抱歉，请开启脚本支持！' />
+       </div>
+    </noscript>
+    <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;
+        background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
+        line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
+        <span style="float:right; padding-right:20px;" class="head">欢迎<a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
+        <span style="padding-left:10px; font-size: 16px; "><img src="images/blocks.gif" width="20" height="20" align="absmiddle" /> </span>
+    </div>
+    <div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
+        <div class="footer"></div>
+    </div>
+    <div region="west" split="true" title="导航菜单" style="width:180px;" id="west">
+        <div class="easyui-accordion" fit="true" border="false">
+		<!--  导航内容 -->
 				
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="#">登录</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input class="form-control" type="text">
-						</div> 
-						<button class="btn btn-default" type="submit">
-							Submit
-						</button>
-							</form>
-						</li>
-					</ul>
-				</div>
+		</div>
+    </div>
+    <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
+        <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
+			<div title="欢迎使用" style="padding:20px;overflow:hidden;" id="home">
 				
-			</nav>
-		</div>
-	</div>
- <!--  登录部分 -->  
-<div class="box">
-	<div class="login-box">
-		<div class="login-title text-center">
-			<h1><small>登录�?</small></h1>
-		</div>
-		<div class="login-content">
-			
-			<div class="form">
-				<form action="user_login" method="post" id="myform">
-					<div class="form-group">
-						<div class="col-xs-12  ">
-							<div class="input-group">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-							<input type="text" id="username" name="username" class="form-control" placeholder="用户�?">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-xs-12  ">
-							<div class="input-group">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							<input type="text" id="password" name="password" class="form-control" placeholder="密码">
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<span class="glyphicon glyphicon-user">
-						</span>
-						<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 员工
-						</label>
-						<span class="glyphicon glyphicon-home">
-						</span>
-						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">管理�?
-						</label>
-					</div>
-				<div class="form-group form-actions">
-					<div class="col-xs-4 col-xs-offset-4 ">
-						<button type="submit" class="btn btn-sm btn-info" value="登录"><span class="glyphicon glyphicon-off"></span> 登录</button>
-					</div>
-				</div>
+			<h1>后台管理系统!</h1>
 
-			</form>
 			</div>
-			
 		</div>
+    </div>  
+    <!--修改密码窗口-->
+    <div id="w" class="easyui-window" title="修改密码" collapsible="false" minimizable="false"
+        maximizable="false" icon="icon-save"  style="width: 300px; height: 150px; padding: 5px;
+        background: #fafafa;">
+        <div class="easyui-layout" fit="true">
+            <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
+                <table cellpadding=3>
+                    <tr>
+                        <td>新密码：</td>
+                        <td><input id="txtNewPass" type="Password" class="txt01" /></td>
+                    </tr>
+                    <tr>
+                        <td>确认密码：</td>
+                        <td><input id="txtRePass" type="Password" class="txt01" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div region="south" border="false" style="text-align: right; height: 30px; line-height: 30px;">
+                <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)" >
+                    确定</a> <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)"
+                        onclick="closeLogin()">取消</a>
+            </div>
+        </div>
+    </div>
+	<div id="mm" class="easyui-menu" style="width:150px;">
+		<div id="mm-tabclose">关闭</div>
+		<div id="mm-tabcloseall">全部关闭</div>
+		<div id="mm-tabcloseother">除此之外全部关闭</div>
+		<div class="menu-sep"></div>
+		<div id="mm-tabcloseright">当前页右侧全部关闭</div>
+		<div id="mm-tabcloseleft">当前页左侧全部关闭</div>
+		<div class="menu-sep"></div>
+		<div id="mm-exit">退出</div>
 	</div>
-</div>
-
-$()
-
-
-
-
-
-
-
 
 
 </body>

@@ -8,4 +8,6 @@ public interface BasesalaryService extends BaseService<Basesalary> {
 
 	List<Basesalary> listCate();
 
+	List<Basesalary> listSum(String basesalarycate);
+
 }

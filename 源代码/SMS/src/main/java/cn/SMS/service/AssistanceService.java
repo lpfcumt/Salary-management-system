@@ -7,5 +7,5 @@ import cn.SMS.model.Assistance;
 public interface AssistanceService extends BaseService<Assistance> {
 
 	List<Assistance> queryById(int aid);
-
+	List query1(int aid);
 }

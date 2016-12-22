@@ -13,7 +13,13 @@ public class BasesalaryDaoImpl extends BaseDaoImpl<Basesalary> implements Basesa
 	@Override
 	public List<Basesalary> listCate() {
 		// TODO Auto-generated method stub
-		return findByHql("select salarycate from basesalary");
+		return findByHql("select basesalarycate from basesalary");
+	}
+
+	@Override
+	public List<Basesalary> listSum(String basesalarycate) {
+		// TODO Auto-generated method stub
+		return findByHql("select basesalarysum from basesalary where basesalarycate='"+basesalarycate+"'");
 	}
 
 }

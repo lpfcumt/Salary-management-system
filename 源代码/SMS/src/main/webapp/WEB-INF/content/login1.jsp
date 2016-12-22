@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后��? -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>	
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/css/bootstrap.min.css">
+    <script src="js/js/jquery-1.11.0.min.js"></script>
+    <script src="js/js/bootstrap.min.js"></script>	
+    <link rel="stylesheet" type="text/css" href="css/css/login.css">
     
     
-<title>登录页面</title>
+<title>员工登录页面</title>
 
 </head>
 
@@ -80,18 +80,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<span class="glyphicon glyphicon-user">
-						</span>
-						<label>
-								<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 员工
-						</label>
-						<span class="glyphicon glyphicon-home">
-						</span>
-						<label>
-							<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">管理员
-						</label>
-					</div>
+					
 				<div class="form-group form-actions">
 					<div class="col-xs-4 col-xs-offset-4 ">
 						<button type="submit" class="btn btn-sm btn-info" value="登录" onclick="return checkForm()"><span class="glyphicon glyphicon-off"></span> 登录</button>

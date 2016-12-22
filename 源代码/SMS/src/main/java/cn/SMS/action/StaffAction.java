@@ -1,5 +1,6 @@
 package cn.SMS.action;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -87,9 +88,10 @@ public class StaffAction extends BaseAction<Staff>{
 	
 	/*ÃÌº”‘±π§*/
 	public String AddStaff() throws Exception{
-		Date dt=new Date();
+		Calendar a=Calendar.getInstance();
+		String time=a.getCalendarType();
 		
-		model.setJointime(dt);
+		model.setJointime(time);
 		staffService.save(model);
 		return SUCCESS;	
 	}

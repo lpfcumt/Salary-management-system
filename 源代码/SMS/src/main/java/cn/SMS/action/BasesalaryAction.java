@@ -36,4 +36,10 @@ public class BasesalaryAction extends BaseAction<Basesalary>{
 		return SUCCESS;
 		
 	}
+	
+	/*根据基本工资类型查询金额*/
+	public String listBasesalarysum() throws Exception{
+		session.put("listsum", basesalaryService.listSum(model.getBasesalarycate()));
+		return SUCCESS;
+	}
 }

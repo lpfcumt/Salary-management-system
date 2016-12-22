@@ -9,6 +9,6 @@ public interface AttendanceService extends BaseService<Attendance> {
 
 	List<Attendance> queryById(int sid);
 
-	List<Attendance> queryByTime(Date time);
+	List<Attendance> queryByTime(int year,int month);
 
 }

@@ -18,9 +18,9 @@ public class AttendanceDaoImpl extends BaseDaoImpl<Attendance> implements Attend
 	}
 
 	@Override
-	public List<Attendance> queryByTime(Date time) {
+	public List<Attendance> queryByTime(int year,int month) {
 		// TODO Auto-generated method stub
-		String hql=" from attendance where time='"+time+"'";
+		String hql=" from attendance where year='"+year+"' and month='"+month+"'";
 		return findByHql(hql);
 	}
 

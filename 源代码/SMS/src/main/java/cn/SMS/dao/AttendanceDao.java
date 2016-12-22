@@ -9,6 +9,6 @@ public interface AttendanceDao extends BaseDao<Attendance>{
 
 	List<Attendance> queryById(int sid);
 
-	List<Attendance> queryByTime(Date time);
+	List<Attendance> queryByTime(int year,int month);
 
 }

@@ -1,7 +1,5 @@
 package cn.SMS.action;
 
-import java.nio.channels.SeekableByteChannel;
-
 import cn.SMS.model.Assistance;
 
 @SuppressWarnings("serial")
@@ -41,6 +39,7 @@ public class AssistanceAction extends BaseAction<Assistance>{
 		
 		/*输出单个员工补助类型*/
 		public String listAssistance() throws Exception{
+		
 			session.put("listassistance", assistanceService.queryById(model.getAid()));
 			return SUCCESS;
 		}

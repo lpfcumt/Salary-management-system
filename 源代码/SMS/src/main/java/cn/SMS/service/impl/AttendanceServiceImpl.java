@@ -18,9 +18,9 @@ public class AttendanceServiceImpl extends BaseServiceImpl<Attendance> implement
 	}
 
 	@Override
-	public List<Attendance> queryByTime(Date time) {
+	public List<Attendance> queryByTime(int year,int month) {
 		// TODO Auto-generated method stub
-		return attendanceDao.queryByTime(time);
+		return attendanceDao.queryByTime(year,month);
 	}
 	
 }
