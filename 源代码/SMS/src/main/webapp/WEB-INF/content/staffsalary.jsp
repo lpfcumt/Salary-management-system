@@ -7,11 +7,13 @@
 <head>
     <meta charset="UTF-8">
     <title>员工工资记录</title>
-    <link rel="stylesheet" type="text/css" href="css/easyui.css">
-    <link rel="stylesheet" type="text/css" href="css/icon.css">
-    <link rel="stylesheet" type="text/css" href="css/demo.css">
-    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/easyui.css">
+	<link rel="stylesheet" type="text/css" href="css/icon.css">
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>		
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.login.js"></script>	
 </head>
 <body>
  <form action="listTotalsalaryBySid" method="post">
@@ -32,12 +34,8 @@
     </div>
     <div style="margin:10px 0;"></div>
  
-    <table id="dg" title="Client Side Pagination" style="width:1200px;height:500px" data-options="
-                rownumbers:true,
-                singleSelect:true,
-                autoRowHeight:false,
-                pagination:true,
-                pageSize:10">
+   <table class="easyui-datagrid" title="Basic DataGrid" style="width:1202px "
+			data-options="singleSelect:true,collapsible:true,url:'datagrid_data1.json',method:'get'" border="1" cellspacing="0">
         <thead>
             <tr>
                 <th field="inv" width="80">员工编号</th>

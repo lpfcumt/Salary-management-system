@@ -5,9 +5,9 @@
 <struts>
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="false" />
-	<package name="SMS" extends="json-default" strict-method-invocation="false">
+	<package name="SMS" namespace="/" extends="json-default" strict-method-invocation="false">
 	
-		<!--用户登陆、注册  -->
+		<!--用户  -->
 		<action name="aa" class="cn.SMS.action.StaffAction" method="CheckStaff" >
 			<result name="CheckStaff" type="json">
 			  <param name="root">jsonMap</param>
@@ -18,13 +18,215 @@
 			 	WEB-INF/content/useindex.jsp
 			</result>
 		</action>
-		<action name="listStaff" class="cn.SMS.action.StaffAction" method="listStaff" >
+		<action name="listStaff11" class="cn.SMS.action.StaffAction" method="listStaff1" >
 			<result name="success" >
 			 	WEB-INF/content/staffslef.jsp
 			</result>
 		</action>
+		<action name="listTotalsalaryBySid" class="cn.SMS.action.TotalsalaryAction" method="listTotalsalaryBySid" >
+			<result name="success" >
+			 	WEB-INF/content/staffsalary.jsp
+			</result>
+		</action>
+		<action name="listAdBySid" class="cn.SMS.action.AttendanceAction" method="listAdBySid" >
+			<result name="success" >
+			 	WEB-INF/content/staffkaoqin.jsp
+			</result>
+		</action>
+		<action name="addStaff" class="cn.SMS.action.StaffAction" method="AddStaff" >
+			<result name="success"  type="chain">
+			 	listAllStaff
+			</result>
+		</action>
 				
+		<action name="deleteStaff" class="cn.SMS.action.StaffAction" method="deleteStaff" >
+			<result name="success"  type="chain">
+			 	listAllStaff
+			</result>
+		</action>
+		<action name="listStaff1" class="cn.SMS.action.StaffAction" method="listStaff" >
+			<result name="success" >
+			 	WEB-INF/content/adminstaff.jsp
+		</result>
+		</action>
+				
+		<action name="updateStaff" class="cn.SMS.action.StaffAction" method="updateStaff" >
+			<result name="success"  type="chain">
+			 	listAllStaff
+			</result>
+		</action>
+		
+		<!--管理员  -->
+		<action name="CheckAdmin" class="cn.SMS.action.AdminAction" method="CheckAdmin" >
+			<result name="success" type="json">
+			  <param name="root">jsonMap</param>
+			</result>
+		</action>
+		<action name="loginAdmin" class="cn.SMS.action.AdminAction" method="loginAdmin" >
+			<result name="success" >
+			 	WEB-INF/content/index.jsp
+			</result>
+		</action>
+		<action name="listAllStaff" class="cn.SMS.action.StaffAction" method="listAllStaff" >
+			<result name="success" >
+			 	WEB-INF/content/stafflist.jsp
+			</result>
+		</action>
+		<action name="listBasesalary" class="cn.SMS.action.BasesalaryAction" method="listBasesalary" >
+			<result name="success" >
+			 	WEB-INF/content/base.jsp
+			</result>
+		</action>
+		<action name="addBasesalary" class="cn.SMS.action.BasesalaryAction" method="addBasesalary" >
+			<result name="success" type="chain">
+			 	listBasesalary
+			</result>
+		</action>
+		
+		<action name="deleteBasesalary" class="cn.SMS.action.BasesalaryAction" method="deleteBasesalary" >
+			<result name="success" type="chain">
+			 	listBasesalary
+			</result>
+		</action>
+		
+		<action name="listJob" class="cn.SMS.action.JobAction" method="listJob" >
+			<result name="success" >
+			 	WEB-INF/content/job.jsp
+			</result>
+		</action>
+		<action name="addJob" class="cn.SMS.action.JobAction" method="addJob" >
+			<result name="success" type="chain">
+			 	listJob
+			</result>
+		</action>
+		<action name="deleteJob" class="cn.SMS.action.JobAction" method="deleteJob" >
+			<result name="success" type="chain">
+			 	listJob
+			</result>
+		</action>
+		<action name="listReward" class="cn.SMS.action.RewardAction" method="listReward" >
+			<result name="success" >
+			 	WEB-INF/content/bonus.jsp
+			</result>
+		</action>
+		<action name="listRewardById" class="cn.SMS.action.RewardAction" method="listRewardById" >
+			<result name="success" >
+			 	WEB-INF/content/updatereward.jsp
+			</result>
+		</action>
+		<action name="updateReward" class="cn.SMS.action.RewardAction" method="updateReward" >
+			<result name="success" type="chain">
+			 	listReward
+			</result>
+		</action>
+		<action name="addReward" class="cn.SMS.action.RewardAction" method="addReward" >
+			<result name="success" type="chain">
+			 	listReward
+			</result>
+		</action>
+		<action name="deleteReward" class="cn.SMS.action.RewardAction" method="deleteReward" >
+			<result name="success" type="chain">
+			 	listReward
+			</result>
+		</action>
+		<action name="newAttendance" class="cn.SMS.action.AttendanceAction" method="newAttendance" >
+			<result name="success" type="chain">
+			 	listStaff
+			</result>
+			<result name="error" type="chain">
+			 	listStaff
+			</result>
+		</action>
+		<action name="listStaff" class="cn.SMS.action.AttendanceAction" method="listStaff" >
+			<result name="success" >
+			 	WEB-INF/content/check.jsp
+			</result>
+		</action>
+		<action name="addAttendance" class="cn.SMS.action.AttendanceAction" method="addAttendance" >
+			<result name="success" type="chain">
+			 	listStaff
+			</result>
+		</action>
+		<action name="listAttendance" class="cn.SMS.action.AttendanceAction" method="listAttendance" >
+			<result name="success" >
+			 	WEB-INF/content/adminkaoqin1.jsp
+			</result>
+		</action>
+		<action name="listAdByTime" class="cn.SMS.action.AttendanceAction" method="listAdByTime" >
+			<result name="success" >
+			 	WEB-INF/content/adminkaoqin.jsp
+			</result>
+		</action>
+		<action name="newTotalsalary" class="cn.SMS.action.TotalsalaryAction" method="newTotalsalary" >
+			<result name="success" type="chain">
+			 	listStaff2
+			</result>
+			<result name="error" type="chain">
+			 	listStaff2
+			</result>
+		</action>
+		<action name="listStaff2" class="cn.SMS.action.TotalsalaryAction" method="listStaff" >
+			<result name="success" >
+			 	WEB-INF/content/balance.jsp
+			</result>
+		</action>
+		<action name="listStaff3" class="cn.SMS.action.TotalsalaryAction" method="saveTotalsalary" >
+			<result name="success" type="chain">
+			 	listStaff2
+			</result>
+		</action>
+		<action name="settleTotalsalary" class="cn.SMS.action.TotalsalaryAction" method="settleTotalsalary" >
+			<result name="success" >
+			 	WEB-INF/content/balanced.jsp
+			</result>
+		</action>
+		<action name="listTotalsalaryByDept" class="cn.SMS.action.TotalsalaryAction" method="listTotalsalaryByDept" >
+			<result name="success" >
+			 	WEB-INF/content/allsalory.jsp
+			</result>
+		</action>
+		<action name="listAssistance" class="cn.SMS.action.AssistanceAction" method="listAssistance" >
+			<result name="success" >
+			 	WEB-INF/content/123.jsp
+			</result>
+		</action>
+		<action name="listAssistance1" class="cn.SMS.action.AssistanceAction" method="listAssistance" >
+			<result name="success" >
+			 	WEB-INF/content/listassistance.jsp
+			</result>
+		</action>
+		<action name="updateAssistance" class="cn.SMS.action.AssistanceAction" method="updateAssistance" >
+			<result name="success" type="chain">
+			 	listAllStaff
+			</result>
+		</action>
+		<action name="addAssistance" class="cn.SMS.action.AssistanceAction" method="addAssistance" >
+			<result name="success" type="chain">
+			 	listAllStaff
+			</result>
+		</action>	
+		<action name="listBasesalarycate1" class="cn.SMS.action.BasesalaryAction" method="listBasesalarycate" >
+			<result name="success" >
+			 	WEB-INF/content/addstaff.jsp
+			</result>
+		</action>
+		<action name="listAssistancesum" class="cn.SMS.action.AssistancesumAction" method="listAssistancesum" >
+			<result name="success" >
+			 	WEB-INF/content/butie.jsp
+			</result>
+		</action>
+		<action name="updateAssistancesum" class="cn.SMS.action.AssistancesumAction" method="updateAssistancesum" >
+			<result name="success" type="chain">
+			 	listAssistancesum
+			</result>
+		</action>	
+		<action name="listAssistancesumId" class="cn.SMS.action.AssistancesumAction" method="listAssistancesumId" >
+			<result name="success" >
+			 	WEB-INF/content/updateas.jsp
+			</result>
+		</action>									
 		<action name="*">
+		
 			<result>WEB-INF/content/{1}.jsp</result>
 		</action>
 	</package>

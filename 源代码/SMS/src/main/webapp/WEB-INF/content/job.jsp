@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ page contentType="text/html; charset=utf-8" language="java"
+	errorPage=""%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -20,30 +24,32 @@
 				<th bgcolor="#F0F0F0" data-options="field:'phone',width:160">岗位等级</th>
 				<th bgcolor="#F0F0F0" data-options="field:'home',width:160">岗位工资</th>
 				<th bgcolor="#F0F0F0" data-options="field:'option',width:120">操作1</th>
-                <th bgcolor="#F0F0F0" data-options="field:'option2',width:120">操作2</th>
+                
 			</tr>
 		</thead>
 		<tbody>
+		<c:forEach items="${sessionScope.listjob}" var="listjob">
 			<tr>
-			<td>项目经理</td>
-			<td>2300</td>
-			<td id="loginStart" ><font size="3">修改</font></td>
-            <td>删除</td>
+			<td>${listjob.jobname}</td>
+			<td>${listjob.jobsum}</td>
+			
+            <td><a href="deleteJob?jid=${listjob.jid}">删除</a></td>
 			</tr>
+		</c:forEach>
 		</tbody>
 	</table>
-    <hr>
-    <div>
+   
+    
         <h2>新增岗位</h2>
-        <form> 
-		岗位&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" /></br>
-        </br>
-        岗位工资&nbsp;&nbsp;<input type="text" /></br>
-        </br>
+        <form action="addJob" method="post"> 
+		岗位:<input type="text" name="jobname"/><br />
+        <br />
+       	岗位工资:<input type="text"  name="jobsum"/><br />
+        <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" value="新建" />
         </form>
-	</div>
+	
      <div id="_login_div_quick_">
         <div class="login_no_qlogin" id="login">
             
@@ -81,8 +87,7 @@
             </div>
         </div>
     </div>
-<script type="text/javascript">
-    $.login('#loginStart');
+
 </script>
 </body>
 <script language="javascript">

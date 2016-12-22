@@ -23,13 +23,19 @@ public class RewardAction extends BaseAction<Reward>{
 	
 	/*修改奖金类型*/
 	public String updateReward() throws Exception{
-		rewardService.update(model);
+		rewardService.update1(model.getRid(),model.getRewardsum());
 		return SUCCESS;
 	}
 	
 	/*删除奖金类型*/
 	public String deleteReward() throws Exception{
-		rewardService.delete(model.getRid());
+		rewardService.deleteById(model.getRid());
+		return SUCCESS;
+	}
+	
+	/*输出通过Id*/
+	public String listRewardById() throws Exception{
+		session.put("listrewardbyid", rewardService.query1(model.getRid()));
 		return SUCCESS;
 	}
 }

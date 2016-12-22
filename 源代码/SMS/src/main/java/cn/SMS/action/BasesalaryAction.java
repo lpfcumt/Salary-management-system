@@ -20,7 +20,7 @@ public class BasesalaryAction extends BaseAction<Basesalary>{
 	
 	/*删除基本工资种类*/
 	public String deleteBasesalary() throws Exception{
-		basesalaryService.delete(model.getBid());
+		basesalaryService.deleteById(model.getBid());
 		return SUCCESS;
 	}
 	

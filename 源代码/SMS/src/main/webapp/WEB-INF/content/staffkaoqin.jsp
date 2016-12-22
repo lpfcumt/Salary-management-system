@@ -7,14 +7,16 @@
 <head>
     <meta charset="UTF-8">
     <title>员工考勤记录</title>
-    <link rel="stylesheet" type="text/css" href="css/easyui.css">
-    <link rel="stylesheet" type="text/css" href="css/icon.css">
-    <link rel="stylesheet" type="text/css" href="css/demo.css">
-    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/easyui.css">
+	<link rel="stylesheet" type="text/css" href="css/icon.css">
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>		
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.login.js"></script>	
 </head>
 <body>
-    <form action="listTotalsalaryBySid" method="post">
+    <form action="listAdBySid" method="post">
    <div >
 		选择查询年份
 		<select name="year">
@@ -32,12 +34,8 @@
     </div>
     <div style="margin:10px 0;"></div>
  
-    <table id="dg" title="Client Side Pagination" style="width:1200px;height:500px" data-options="
-                rownumbers:true,
-                singleSelect:true,
-                autoRowHeight:false,
-                pagination:true,
-                pageSize:10">
+    <<table class="easyui-datagrid" title="Basic DataGrid" style="width:1202px "
+			data-options="singleSelect:true,collapsible:true,url:'datagrid_data1.json',method:'get'" border="1" cellspacing="0">
         <thead>
             <tr>
                 <th field="inv" width="80">员工编号</th>
@@ -56,21 +54,21 @@
             </tr>
         </thead>
          <tbody>
-        <c:forEach items="${sessionScope.listsalary}" var="listsalary">
+        <c:forEach items="${sessionScope.listadbysid}" var="listadbysid">
         	<tr>
-        		<td>${listsalary.sid}</td>
-        		<td>${listsalary.staffname}</td>
-        		<td>${listsalary.year}</td>
-        		<td>${listsalary.month}</td>
-        		<td>${listsalary.latetimes}</td>
-        		<td>${listsalary.deduction1}</td>
-        		<td>${listsalary.leavetimes}</td>
-        		<td>${listsalary.deduction2}</td>
-        		<td>${listsalary.shulddays}</td>
-        		<td>${listsalary.realdays}</td>
-        		<td>${listsalary.deduction3}</td>
-        		<td>${listsalary.status}</td>
-        		<td>${listsalary.time}</td>
+        		<td>${listadbysid.sid}</td>
+        		<td>${listadbysid.staffname}</td>
+        		<td>${listadbysid.year}</td>
+        		<td>${listadbysid.month}</td>
+        		<td>${listadbysid.latetimes}</td>
+        		<td>${listadbysid.deduction1}</td>
+        		<td>${listadbysid.leavetimes}</td>
+        		<td>${listadbysid.deduction2}</td>
+        		<td>${listadbysid.shulddays}</td>
+        		<td>${listadbysid.realdays}</td>
+        		<td>${listadbysid.deduction3}</td>
+        		<td>${listadbysid.status}</td>
+        		<td>${listadbysid.time}</td>
         	</tr>
         </c:forEach>
         </tbody>

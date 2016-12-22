@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ page contentType="text/html; charset=utf-8" language="java"
+	errorPage=""%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
@@ -15,29 +19,31 @@
 	<table class="easyui-datagrid" title="Basic DataGrid" style="width:362px "	data-options="singleSelect:true,collapsible:true,url:'datagrid_data1.json',method:'get'" border="1" cellspacing="0">
 		<thead>
 			<tr>
-				<th bgcolor="#F0F0F0" data-options="field:'phone',width:160">部门</th>
+				<th bgcolor="#F0F0F0" data-options="field:'phone',width:160">基本工资等级</th>
 				<th bgcolor="#F0F0F0" data-options="field:'home',width:160">基本工资</th>
 				<th bgcolor="#F0F0F0" data-options="field:'option',width:120">操作1</th>
-                <th bgcolor="#F0F0F0" data-options="field:'option',width:120">操作2</th>
+             
 			</tr>
 		</thead>
 		<tbody>
+		<c:forEach items="${sessionScope.listbasesalary}" var="listbasesalary">
 			<tr>
-			    <td>财务部</td>
-			    <td>2300</td>
-			    <td id="loginStart" ><font size="3">修改</font></td>
-                <td>删除</td>
+			    <td>${listbasesalary.basesalarycate}</td>
+			    <td>${listbasesalary.basesalarysum}</td>
+			    
+                <td><a href="deleteBasesalary?bid=${listbasesalary.bid}">删除</a></td>
 			</tr>
+		</c:forEach>
 		</tbody>
 	</table>
     <hr>
     <div>
-        <h2>新建部门</h2>
-        <form> 
-		部门&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" /></br>
-        </br>
-        基本工资&nbsp;&nbsp;<input type="text" /></br>
-        </br>
+        <h2>新建基本工资等级</h2>
+        <form action="addBasesalary" method="post"> 
+		基本工资等级:<input type="text" name="basesalarycate"/><br />
+       <br />
+       	 基本工资:<input type="text"  name="basesalarysum"/><br />
+        <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" value="新建" />
         </form>
@@ -77,9 +83,7 @@
             </div>
         </div>
     </div>
-<script type="text/javascript">
-    $.login('#loginStart');
-</script>
+
 </body>
 <script language="javascript">
     function toVaild(){

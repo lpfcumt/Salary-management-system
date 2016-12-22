@@ -1,6 +1,8 @@
 package cn.SMS.action;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,54 +52,74 @@ public class TotalsalaryAction extends BaseAction<Totalsalary>{
 	/*保存总工资*/
 	public String saveTotalsalary() throws Exception{
 		Calendar a=Calendar.getInstance();
-		String time=a.getCalendarType();
+		int year=a.get(Calendar.YEAR);
+		int month=a.get(Calendar.MONTH)+1;
+		Date dt=new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time =format.format(dt);
 		String adminname=(String)session.get("adminname");
 		model.setAdminname(adminname);
 		model.setTimes(time);
-		totalsalaryService.update(model);
+		model.setStatus("已结算");
+		totalsalaryService.update1(model.getSid(),year,month,model.getAdminname(),model.getAssistancesum(),model.getBasesalarysum(),model.getDeductionsum(),
+				model.getJobsum(),model.getRealsum(),model.getRewardsum(),model.getStatus(),model.getTip(),model.getTotalsum(),model.getTimes());
 		return SUCCESS;
 	}
 	
 	/*新建新月份的工资*/
 	public String newTotalsalary() throws Exception{
-		StaffServiceImpl staffServiceImpl=new StaffServiceImpl();		
-		List<Staff> liststaff=staffServiceImpl.query();
+				
+		List<Staff> liststaff=totalsalaryService.query1();
 		Calendar a=Calendar.getInstance();
 		String time=a.getCalendarType();
 		int year=a.get(Calendar.YEAR);
 		int month=a.get(Calendar.MONTH)+1;
 		List<Totalsalary> totalsalary=totalsalaryService.queryByTime(year,month);
-		if (totalsalary==null) {
-			for(int i=0;i<=liststaff.size();i++){
+		if (totalsalary.size()<1) {
+			for(int i=0;i<liststaff.size();i++){
 			Staff staff=liststaff.get(i);
 			String status="未结算";
 			model.setSid(staff.getSid());
-			model.setSatffname(staff.getStaffname());
+			model.setStaffname(staff.getStaffname());
 			model.setStatus(status);
-			model.setTimes(time);
+			model.setYear(year);
+			model.setMonth(month);
+			model.setDepartment(staff.getDept());
 			totalsalaryService.save(model);
-			jsonMap.put("flag", true);
+			
 			}
+			return SUCCESS;
 		}
 		else{
-			jsonMap.put("flag", false);
+			return ERROR;
 		}
 		
-		return SUCCESS;
+		
 		
 	}
 	
 	/*根据年份月份，输出未结算的员工*/
 	public String listStaff() throws Exception{
+		Calendar a=Calendar.getInstance();
+		String time=a.getCalendarType();
+		int year=a.get(Calendar.YEAR);
+		int month=a.get(Calendar.MONTH)+1;
 		String status="未结算";
 		model.setStatus(status);
-		session.put("liststaff", totalsalaryService.queryStaff(model.getYear(),model.getMonth(),model.getStatus()));
+		session.put("liststaff1", totalsalaryService.queryStaff(year,month,model.getStatus()));
 		return SUCCESS;
 	}
 	
 	/*根据年份、月份、部门输出员工工资*/
 	public String listTotalsalaryByDept() throws Exception{
-		session.put("listtotalsalary",totalsalaryService.querySalary(model.getYear(),model.getMonth(),model.getDepartment()));
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String years=request.getParameter("year");
+		int year;
+		year=Integer.parseInt(years);
+		String months=request.getParameter("month");
+		int month;
+		month=Integer.parseInt(months);
+		session.put("listtotalsalary",totalsalaryService.querySalary(year,month,model.getDepartment()));
 		return SUCCESS;
 		
 	}
@@ -116,72 +138,79 @@ public class TotalsalaryAction extends BaseAction<Totalsalary>{
 
 	/*结算工资*/
 	public String settleTotalsalary() throws Exception{
+		Calendar a=Calendar.getInstance();
+		String time=a.getCalendarType();
+		int year=a.get(Calendar.YEAR);
+		int month=a.get(Calendar.MONTH)+1;
 		String adminname=(String)session.get("adminname");
 		model.setAdminname(adminname);
 		session.put("status", "未结算");
-		StaffServiceImpl staffServiceImpl=new StaffServiceImpl();		
-		List<Staff> liststaff=staffServiceImpl.queryById(model.getSid());
+		session.put("staffid", model.getSid());		
+		List<Staff> liststaff=totalsalaryService.query2(model.getSid());
 		Staff staff=liststaff.get(0);
-		
-		
+		session.put("staffname1", staff.getStaffname());
+		session.put("dept", staff.getDept());
+		session.put("year", year);
+		session.put("month", month);
 		
 		/*计算补助工资*/
 		AssistanceServiceImpl assistanceServiceImpl= new AssistanceServiceImpl();
 		AssistancesumServiceImpl assistancesumServiceImpl=new AssistancesumServiceImpl();
-		List<Assistance> listassistance=assistanceServiceImpl.queryById(model.getSid());
+		List<Assistance> listassistance=totalsalaryService.query3(model.getSid());
 		Assistance cate=listassistance.get(0);
-		List<Assistancesum> listassistancesum=assistancesumServiceImpl.query();
+		List<Assistancesum> listassistancesum=totalsalaryService.query4();
 		Double assistancesum=0.0;
-		if(cate.getCate1()=="是"){
+		String cate1=cate.getCate1();
+		if(cate1.equals("是")){
 			Assistancesum sum=listassistancesum.get(0);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
 		else {
 			assistancesum=assistancesum+0;
 		}
-		if(cate.getCate2()=="是"){
+		if(cate.getCate2().equals("是")){
 			Assistancesum sum=listassistancesum.get(1);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
 		else {
 			assistancesum=assistancesum+0;
 		}
-		if(cate.getCate3()=="是"){
+		if(cate.getCate3().equals("是")){
 			Assistancesum sum=listassistancesum.get(2);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
 		else {
 			assistancesum=assistancesum+0;
 		}
-		if(cate.getCate4()=="是"){
+		if(cate.getCate4().equals("是")){
 			Assistancesum sum=listassistancesum.get(3);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
 		else {
 			assistancesum=assistancesum+0;
 		}
-		if(cate.getCate5()=="是"){
+		if(cate.getCate5().equals("是")){
 			Assistancesum sum=listassistancesum.get(4);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
 		else {
 			assistancesum=assistancesum+0;
 		}
-		if(cate.getCate6()=="是"){
+		if(cate.getCate6().equals("是")){
 			Assistancesum sum=listassistancesum.get(5);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
 		else {
 			assistancesum=assistancesum+0;
 		}
-		if(cate.getCate7()=="是"){
+		if(cate.getCate7().equals("是")){
 			Assistancesum sum=listassistancesum.get(6);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
 		else {
 			assistancesum=assistancesum+0;
 		}
-		if(cate.getCate8()=="是"){
+		if(cate.getCate8().equals("是")){
 			Assistancesum sum=listassistancesum.get(7);
 			assistancesum=assistancesum+sum.getAssistancesum();
 		}
@@ -193,14 +222,14 @@ public class TotalsalaryAction extends BaseAction<Totalsalary>{
 		
 		/*计算基本工资*/
 		BasesalaryServiceImpl basesalaryServiceImpl=new BasesalaryServiceImpl();
-		List<Basesalary> listbasesalaty=basesalaryServiceImpl.listSum(staff.getBasesalarycate());
+		List<Basesalary> listbasesalaty=totalsalaryService.query5(staff.getBasesalarycate());
 		Basesalary basesalary=listbasesalaty.get(0);
 		session.put("basesalarysum", basesalary.getBasesalarysum());
 		model.setBasesalarysum(basesalary.getBasesalarysum());
 		
 		/*计算实扣工资*/
 		AttendanceServiceImpl attendanceServiceImpl=new AttendanceServiceImpl();
-		List<Attendance> listattendance=attendanceServiceImpl.queryById(model.getSid());
+		List<Attendance> listattendance=totalsalaryService.query6(model.getSid());
 		Attendance attendance=listattendance.get(0);
 		double dedutionsum=attendance.getDeduction1()+attendance.getDeduction2()+attendance.getDeduction3();
 		session.put("deduction", dedutionsum);
@@ -208,14 +237,14 @@ public class TotalsalaryAction extends BaseAction<Totalsalary>{
 		
 		/*计算职位工资*/
 		JobServiceImpl jobServiceImpl=new JobServiceImpl(); 
-		List<Job> listjobsum=jobServiceImpl.listJobsum(staff.getJob());
+		List<Job> listjobsum=totalsalaryService.query7(staff.getJob());
 		Job job=listjobsum.get(0);
 		session.put("jobsum", job.getJobsum());
 		model.setJobsum(job.getJobsum());
 		
 		/*计算奖金*/
 		RewardServiceImpl rewardServiceImpl=new RewardServiceImpl();
-		List<Reward> listreward=rewardServiceImpl.query();
+		List<Reward> listreward=totalsalaryService.query8();
 		double rewardsum;
 		Reward reward1=listreward.get(0);
 		Reward reward2=listreward.get(1);
@@ -223,7 +252,7 @@ public class TotalsalaryAction extends BaseAction<Totalsalary>{
 		if (attendance.getLatetimes()<1 && attendance.getLeavetimes()<1 && attendance.getRealdays()==attendance.getShulddays() ) {
 			rewardsum=reward1.getRewardsum();
 		}
-		else if (attendance.getLeavetimes()==1 && attendance.getLatetimes()<1  && 0<=attendance.getShulddays()-attendance.getRealdays() && attendance.getShulddays()-attendance.getRealdays()<=1) {
+		else if (attendance.getLeavetimes()==1 && attendance.getLatetimes()==1  && 0<=attendance.getShulddays()-attendance.getRealdays() && attendance.getShulddays()-attendance.getRealdays()<=1) {
 			rewardsum=reward2.getRewardsum();
 		}
 		else if (1<attendance.getLeavetimes() && attendance.getLeavetimes()<=3 && attendance.getLatetimes()<1  && 1<attendance.getShulddays()-attendance.getRealdays() && attendance.getShulddays()-attendance.getRealdays()<=3) {
@@ -237,7 +266,7 @@ public class TotalsalaryAction extends BaseAction<Totalsalary>{
 		
 		/*计算实际工资*/
 		double totalsum=0.0;
-		totalsum=basesalary.getBasesalarysum()+assistancesum+job.getJobsum()+rewardsum;
+		totalsum=basesalary.getBasesalarysum()+assistancesum+job.getJobsum()+rewardsum-dedutionsum;
 		session.put("totalsum", totalsum);
 		model.setRealsum(totalsum);
 		

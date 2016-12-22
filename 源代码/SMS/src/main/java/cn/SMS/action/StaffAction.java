@@ -1,10 +1,15 @@
 package cn.SMS.action;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.components.Else;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -83,13 +88,19 @@ public class StaffAction extends BaseAction<Staff>{
 		session.put("staffname", staffname);
 		session.put("staffid", staff.getSid());
 		
+		
 		return SUCCESS;
 	}
 	
 	/*添加员工*/
 	public String AddStaff() throws Exception{
-		Calendar a=Calendar.getInstance();
-		String time=a.getCalendarType();
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String basesalarycate=request.getParameter("basesalarycate");
+		model.setBasesalarycate(basesalarycate);
+		
+		Date dt=new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time =format.format(dt);
 		
 		model.setJointime(time);
 		staffService.save(model);
@@ -98,13 +109,14 @@ public class StaffAction extends BaseAction<Staff>{
 	
 	/*修改用户信息*/
 	public String updateStaff() throws Exception{
-		staffService.update(model);
+		staffService.updateById(model.getSid(),model.getAddress(),model.getBasesalarycate(),model.getBirthday()
+				,model.getDept(),model.getEmail(),model.getJob(),model.getSex(),model.getStaffname(),model.getTel());
 		return SUCCESS;
 	}
 	
 	/*删除用户*/
 	public String deleteStaff() throws Exception{
-		staffService.delete(model.getSid());
+		staffService.deleteById(model.getSid());
 		return SUCCESS;
 	}
 	
@@ -117,8 +129,18 @@ public class StaffAction extends BaseAction<Staff>{
 	
 	/*展示员工详细信息*/
 	public String listStaff() throws Exception{
-		int sid=(int)session.get("staffid");
-		session.put("liststaff", staffService.queryById(sid));
-		return SUCCESS;
-	}
+		
+			
+		session.put("liststaff", staffService.queryById(model.getSid()));
+		return SUCCESS;		
 }
+	
+	public String listStaff1() throws Exception{
+		
+		int sid=(int)session.get("staffid");		
+		session.put("liststaff1", staffService.queryById(sid));
+		return SUCCESS;		
+}
+	
+	
+	}

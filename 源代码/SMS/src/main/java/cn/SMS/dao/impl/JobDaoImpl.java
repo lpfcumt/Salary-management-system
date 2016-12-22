@@ -16,4 +16,11 @@ public class JobDaoImpl extends BaseDaoImpl<Job> implements JobDao{
 		return findByHql("select jobsum from job where jobname='"+jobname+"'");
 	}
 
+	@Override
+	public void deleteById(int jid) {
+		// TODO Auto-generated method stub
+		String hql="delete from job where jid='"+jid+"'";
+		getSession().createQuery(hql).executeUpdate();
+	}
+
 }

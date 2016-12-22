@@ -22,4 +22,11 @@ public class BasesalaryDaoImpl extends BaseDaoImpl<Basesalary> implements Basesa
 		return findByHql("select basesalarysum from basesalary where basesalarycate='"+basesalarycate+"'");
 	}
 
+	@Override
+	public void deleteById(int bid) {
+		// TODO Auto-generated method stub
+		String hql="delete from basesalary where bid='"+bid+"'";
+		getSession().createQuery(hql).executeUpdate();
+	}
+
 }

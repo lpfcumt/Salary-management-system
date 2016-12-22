@@ -16,4 +16,10 @@ public class JobServiceImpl extends BaseServiceImpl<Job> implements JobService{
 		return jobDao.listJobsum(jobname);
 	}
 
+	@Override
+	public void deleteById(int jid) {
+		// TODO Auto-generated method stub
+		jobDao.deleteById(jid);
+	}
+
 }

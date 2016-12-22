@@ -11,7 +11,7 @@
     <script type="text/javascript">
 	 var _menus = {"menus":[
 						{"menuid":"1","icon":"icon-sys","menuname":"个人信息",
-							"menus":[{"menuname":"查看","icon":"icon-add","url":"listStaff"}
+							"menus":[{"menuname":"查看","icon":"icon-add","url":"listStaff11"}
 								]
 						},{"menuid":"8","icon":"icon-sys","menuname":"工资信息",
 							"menus":[{"menuname":"工资记录","icon":"icon-nav","url":"staffsalary"},

@@ -18,6 +18,7 @@ public class AdminAction extends BaseAction<Admin>{
 	private Map<String, Object> jsonMap=new HashMap<String, Object>();
 	private String username;
 	private String password;
+	private String passwords;
 
 	public Map<String, Object> getJsonMap() {
 		return jsonMap;
@@ -26,6 +27,7 @@ public class AdminAction extends BaseAction<Admin>{
 	public void setJsonMap(Map<String, Object> jsonMap) {
 		this.jsonMap = jsonMap;
 	}
+	
 
 	public String getUsername() {
 		return username;
@@ -42,12 +44,20 @@ public class AdminAction extends BaseAction<Admin>{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	
+
+	public String getPasswords() {
+		return passwords;
+	}
+
+	public void setPasswords(String passwords) {
+		this.passwords = passwords;
+	}
+
 	/*ºÏ≤È’À∫≈√‹¬Î*/
 	public String CheckAdmin() throws Exception{
 		String adminname=this.getUsername();
-		String password=this.getPassword();
+		String password=this.getPasswords();
 		Admin admin=adminService.Query(adminname,password);
 		if (admin ==null){
 			jsonMap.put("flag", false);
@@ -62,7 +72,7 @@ public class AdminAction extends BaseAction<Admin>{
 	/*π‹¿Ì‘±µ«¬º*/
 	public String loginAdmin() throws Exception{
 		String adminname=this.getUsername();
-		String password=this.getPassword();
+		String password=this.getPasswords();
 		Admin admin=adminService.Query(adminname,password);
 		session.put("adminname",adminname);
 		session.put("adminid", admin.getAdminid());

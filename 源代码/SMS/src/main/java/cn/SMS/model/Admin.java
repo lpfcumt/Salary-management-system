@@ -13,6 +13,7 @@ public class Admin {
 	private int adminid;
 	private String password;
 	private int sid;
+	private String adminname;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -38,4 +39,12 @@ public class Admin {
 	public void setSid(int sid) {
 		this.sid = sid;
 	}
+	@Column(updatable=false,nullable=false)
+	public String getAdminname() {
+		return adminname;
+	}
+	public void setAdminname(String adminname) {
+		this.adminname = adminname;
+	}
+	
 }

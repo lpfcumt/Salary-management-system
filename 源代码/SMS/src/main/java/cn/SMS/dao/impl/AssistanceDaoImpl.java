@@ -16,4 +16,13 @@ public class AssistanceDaoImpl extends BaseDaoImpl<Assistance> implements Assist
 		return findByHql(hql);
 	}
 
+	@Override
+	public void update1(int sid, String cate1, String cate2, String cate3, String cate4, String cate5, String cate6,
+			String cate7, String cate8) {
+		// TODO Auto-generated method stub
+		String hql="update assistance a set a.cate1='"+cate1+"',a.cate2='"+cate2+"',a.cate3='"+cate3+"',a.cate4='"+cate4+"',a.cate5='"+cate5
+				+"',a.cate6='"+cate6+"',a.cate7='"+cate7+"',a.cate8='"+cate8+"' where sid="+sid;
+		getSession().createQuery(hql).executeUpdate();
+	}
+
 }

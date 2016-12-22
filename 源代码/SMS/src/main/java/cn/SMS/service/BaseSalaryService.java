@@ -10,4 +10,6 @@ public interface BasesalaryService extends BaseService<Basesalary> {
 
 	List<Basesalary> listSum(String basesalarycate);
 
+	void deleteById(int bid);
+
 }

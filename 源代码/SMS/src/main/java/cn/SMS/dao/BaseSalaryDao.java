@@ -10,4 +10,6 @@ public interface BasesalaryDao extends BaseDao<Basesalary>{
 
 	List<Basesalary> listSum(String basesalarycate);
 
+	void deleteById(int bid);
+
 }

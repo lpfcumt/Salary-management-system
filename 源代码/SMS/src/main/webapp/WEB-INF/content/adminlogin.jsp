@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8
-   %>
+<%@ page contentType="text/html; charset=utf-8" language="java"
+	errorPage=""%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html>
 <head>
@@ -63,7 +64,7 @@
 		<div class="login-content">
 			
 			<div class="form">
-				<form action="loginStaff" method="post" id="myform">
+				<form action="loginAdmin" method="post" id="myform">
 					<div class="form-group">
 						<div class="col-xs-12  ">
 							<div class="input-group">
@@ -76,7 +77,7 @@
 						<div class="col-xs-12  ">
 							<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							<input type="password" id="password" name="password" class="form-control" placeholder="密码">
+							<input type="password" id="password" name="passwords" class="form-control" placeholder="密码">
 							</div>
 						</div>
 					</div>
@@ -97,13 +98,13 @@
 
 function checkForm(){
 	var username=$("#username").val();
-	var password=$("#password").val();
+	var password=$("input[name='passwords']")  .val();
 	
 	
 	$.ajax({
-		   url:'aa',// 跳转到 action  
+		   url:'CheckAdmin',// 跳转到 action  
 		   data:{  
-	    		username : username,password : password  
+			   username : username,passwords : password  
 		    }, 
 		    type:'post',  
 		    cache:false,  

@@ -1,5 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/content/adminkaoqin.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/content/adminlogin.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/content/allsalory1.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/content/balanced.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/content/butie.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/content/check.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/content/index.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/content/staffkaoqin.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/content/staffsalary.jsp=UTF-8

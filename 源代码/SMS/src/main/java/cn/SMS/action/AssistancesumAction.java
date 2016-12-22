@@ -9,7 +9,7 @@ public class AssistancesumAction extends BaseAction<Assistancesum>{
 	
 	/*更新补助种类信息*/
 	public String updateAssistancesum() throws Exception{
-		assistancesumService.update(model);
+		assistancesumService.update1(model.getAsid(),model.getName(),model.getAssistancesum());
 		return SUCCESS;
 	}
 	
@@ -21,7 +21,13 @@ public class AssistancesumAction extends BaseAction<Assistancesum>{
 	
 	/*输出所有补助种类*/
 	public String listAssistancesum() throws Exception{
-		session.put("listassistancesum", assistancesumService.query());
+		session.put("listassistancesum", assistancesumService.query2());
+		return SUCCESS;
+	}
+	
+	/*输出通过ID*/
+	public String listAssistancesumId() throws Exception{
+		session.put("listasbyid", assistancesumService.query1(model.getAsid()));
 		return SUCCESS;
 	}
 }

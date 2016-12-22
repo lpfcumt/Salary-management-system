@@ -69,7 +69,7 @@ public class Attendance {
 		this.staffname = staffname;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public Double getShulddays() {
 		return shulddays;
 	}
@@ -77,7 +77,7 @@ public class Attendance {
 		this.shulddays = shulddays;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public Double getRealdays() {
 		return realdays;
 	}
@@ -85,7 +85,7 @@ public class Attendance {
 		this.realdays = realdays;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public Double getDeduction1() {
 		return deduction1;
 	}
@@ -93,7 +93,7 @@ public class Attendance {
 		this.deduction1 = deduction1;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public Double getLatetimes() {
 		return latetimes;
 	}
@@ -101,7 +101,7 @@ public class Attendance {
 		this.latetimes = latetimes;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public Double getDeduction2() {
 		return deduction2;
 	}
@@ -109,7 +109,7 @@ public class Attendance {
 		this.deduction2 = deduction2;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public Double getLeavetimes() {
 		return leavetimes;
 	}
@@ -117,21 +117,21 @@ public class Attendance {
 		this.leavetimes = leavetimes;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public Double getDeduction3() {
 		return deduction3;
 	}
 	public void setDeduction3(Double deduction3) {
 		this.deduction3 = deduction3;
 	}
-	@Column(nullable=false)
+	@Column
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	@Column(nullable=false)
+	@Column
 	public String getTime() {
 		return time;
 	}

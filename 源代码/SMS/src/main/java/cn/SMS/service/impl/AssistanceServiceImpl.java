@@ -16,10 +16,13 @@ public class AssistanceServiceImpl extends BaseServiceImpl<Assistance> implement
 		return assistanceDao.queryById(aid);
 	}
 
+	
+
 	@Override
-	public List query1(int aid) {
+	public void update1(int sid, String cate1, String cate2, String cate3, String cate4, String cate5, String cate6,
+			String cate7, String cate8) {
 		// TODO Auto-generated method stub
-		return null;
+		assistanceDao.update1(sid,cate1,cate2,cate3,cate4,cate5,cate6,cate7,cate8);
 	}
 
 }

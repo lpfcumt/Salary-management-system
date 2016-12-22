@@ -11,36 +11,27 @@
     <script type="text/javascript">
 	 var _menus = {"menus":[
 						{"menuid":"1","icon":"icon-sys","menuname":"员工管理",
-							"menus":[{"menuname":"员工列表","icon":"icon-add","url":"stafflist"}
+							"menus":[{"menuname":"员工列表","icon":"icon-add","url":"listAllStaff"}
 								]
 						},{"menuid":"8","icon":"icon-sys","menuname":"工资设定-固定工资",
-							"menus":[{"menuname":"基本工资","icon":"icon-nav","url":"base"},
-									{"menuname":"岗位工资","icon":"icon-nav","url":"job"},
-                                    {"menuname":"技能工资","icon":"icon-nav","url":"skill"},
-                                    {"menuname":"工龄工资","icon":"icon-nav","url":"worktime"}
+							"menus":[{"menuname":"基本工资","icon":"icon-nav","url":"listBasesalary"},
+									{"menuname":"岗位工资","icon":"icon-nav","url":"listJob"}
 								]
 						},{"menuid":"56","icon":"icon-sys","menuname":"工资设定-浮动工资",
-							"menus":[{"menuname":"效益工资","icon":"icon-nav","url":"xiaoyi"},
-									{"menuname":"业绩工资","icon":"icon-nav","url":"yeji"},
-                                    {"menuname":"奖金","icon":"icon-nav","url":"bonus"},
-                                    {"menuname":"补贴","icon":"icon-nav","url":"butie"}
-								]
-						},{"menuid":"28","icon":"icon-sys","menuname":"工资设定-特殊薪资制",
-							"menus":[{"menuname":"日薪制","icon":"icon-nav","url":"day"},
-									{"menuname":"计时工资制","icon":"icon-nav","url":"time"},
-									{"menuname":"计件工资制","icon":"icon-nav","url":"number"}
+							"menus":[
+                                    {"menuname":"奖金","icon":"icon-nav","url":"listReward"},
+                                    {"menuname":"补贴","icon":"icon-nav","url":"listAssistancesum"}
 								]
 						},{"menuid":"39","icon":"icon-sys","menuname":"考核管理",
-							"menus":[{"menuname":"本月已考核人员","icon":"icon-nav","url":"checked"},
-								{"menuname":"本月未考核人员","icon":"icon-nav","url":"check"},
+							"menus":[
+								{"menuname":"本月未考核人员","icon":"icon-nav","url":"newAttendance"},
 								{"menuname":"查询考核记录","icon":"icon-nav","url":"adminkaoqin"},
 								]
 						},{"menuid":"38","icon":"icon-sys","menuname":"工资管理-工资报告",
 							"menus":[{"menuname":"查看工资信息","icon":"icon-nav","url":"allsalory"},
 								]
 						},{"menuid":"19","icon":"icon-sys","menuname":"工资管理-工资结算",
-							"menus":[{"menuname":"结算当月工资","icon":"icon-nav","url":"balance"},
-								 {"menuname":"当月已发放工资","icon":"icon-nav","url":"balanced"},
+							"menus":[{"menuname":"结算当月工资","icon":"icon-nav","url":"newTotalsalary"}
 								]
 						}
 				]};

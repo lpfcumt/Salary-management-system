@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java"
 	errorPage=""%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html>
 <head>
@@ -93,8 +94,8 @@
 		</div>
 	</div>
 </div>
-  <script>
-
+  
+<script>
 function checkForm(){
 	var username=$("#username").val();
 	var password=$("#password").val();
@@ -111,7 +112,7 @@ function checkForm(){
 		    success:function(data) { 
 		    	console.log(data);
 		    	if(data.flag==false){
-		    		 alert("密码错误,请重新输入!");
+		    		alert("密码错误,请重新输入!");
 		    		 return false;
 		    	}
 		    	else{
@@ -123,7 +124,7 @@ function checkForm(){
 			    	}
 		     }
 		   
-	});
+	})
 	return false;
 	
 };

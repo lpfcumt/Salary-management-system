@@ -13,6 +13,7 @@ public class Assistancesum {
 	private int asid;
 	private String assistancesumname;
 	private Double assistancesum;
+	private String name;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -37,6 +38,14 @@ public class Assistancesum {
 	}
 	public void setAssistancesum(Double assistancesum) {
 		this.assistancesum = assistancesum;
+	}
+	
+	@Column
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

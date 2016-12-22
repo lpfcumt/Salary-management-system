@@ -14,7 +14,7 @@ public class Staff {
 	private int sid;
 	private String staffname;
 	private String sex;
-	private int age;
+
 	private String birthday;
 	private String tel;
 	private String email;
@@ -51,13 +51,7 @@ public class Staff {
 		this.sex = sex;
 	}
 	
-	@Column
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
+	
 	
 	@Column(nullable=false)
 	public String  getBirthday() {
@@ -116,7 +110,7 @@ public class Staff {
 		this.basesalarycate = basesalarycate;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public String  getJointime() {
 		return jointime;
 	}

@@ -29,7 +29,7 @@ public class JobAction extends BaseAction<Job>{
 	
 	/*删除职位信息*/
 	public String deleteJob() throws Exception{
-		jobService.delete(model.getJid());
+		jobService.deleteById(model.getJid());
 		return SUCCESS;
 	}
 	

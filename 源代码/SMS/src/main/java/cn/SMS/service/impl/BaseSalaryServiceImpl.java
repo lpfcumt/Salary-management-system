@@ -24,4 +24,10 @@ public class BasesalaryServiceImpl extends BaseServiceImpl<Basesalary> implement
 		return basesalaryDao.listSum(basesalarycate);
 	}
 
+	@Override
+	public void deleteById(int bid) {
+		// TODO Auto-generated method stub
+		basesalaryDao.deleteById(bid);
+	}
+
 }

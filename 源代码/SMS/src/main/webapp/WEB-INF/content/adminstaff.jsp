@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<%@ page contentType="text/html; charset=utf-8" language="java"
+	errorPage=""%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -16,18 +20,26 @@
         <div></div>
     </div>
     <div style="margin:10px 0;"></div>
-    <h3>员工照片</h3>
-    <img src=""/><br/>
-    <h3>员工编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工年龄&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工出生日期&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工联系电话&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工联系地址&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工所在部门&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工职位&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
-    <h3>员工入职时间&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value=""/></h3>
+    <form action="updateStaff" method="post">
+    <c:forEach items="${sessionScope.liststaff}" var="liststaff">
+    <h3>员工编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.sid}" name="sid" /></h3>
+    <h3>员工姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.staffname}" name="staffname"/></h3>
+    <h3>员工性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.sex}" name="sex"/></h3>
+    <h3>员工邮箱&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.email}" name="email"/></h3>
+    <h3>员工出生日期&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.birthday}" name="birthday"/></h3>
+    <h3>员工联系电话&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.tel}" name="tel"/></h3>
+    <h3>员工联系地址&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.address}" name="address"/></h3>
+    <h3>员工所在部门&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.dept}" name="dept"/></h3>
+    <h3>员工职位&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.job}" name="job"/></h3>
+    <h3>员工基本工资类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;<input style="width:200px" type="text" value="${liststaff.basesalarycate}" name="basesalarycate"/></h3>
+   
 	<input type="submit" value="确认修改" />
+	</c:forEach>
+	</form>
+	
+	<c:forEach items="${sessionScope.liststaff}" var="liststaff">
+	<br><br><br>
+	<a class="button" href="listAssistance?sid=${liststaff.sid}">修改补助类型</a>
+	</c:forEach>
 </body>
 </html>

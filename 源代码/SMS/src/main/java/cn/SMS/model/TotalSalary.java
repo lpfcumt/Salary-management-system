@@ -14,7 +14,7 @@ public class Totalsalary {
 	private int year;
 	private int month;
 	private int sid;
-	private String satffname;
+	private String staffname;
 	private Double basesalarysum;
 	private Double jobsum;
 	private Double rewardsum;
@@ -38,14 +38,14 @@ public class Totalsalary {
 		this.tid = tid;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public int getYear() {
 		return year;
 	}
 	public void setYear(int year) {
 		this.year = year;
 	}
-	@Column( nullable=false)
+	@Column 
 	public int getMonth() {
 		return month;
 	}
@@ -53,7 +53,7 @@ public class Totalsalary {
 		this.month = month;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public int getSid() {
 		return sid;
 	}
@@ -62,15 +62,15 @@ public class Totalsalary {
 		this.sid = sid;
 	}
 	
-	@Column( nullable=false)
-	public String getSatffname() {
-		return satffname;
+	@Column 
+	public String getStaffname() {
+		return staffname;
 	}
-	public void setSatffname(String satffname) {
-		this.satffname = satffname;
+	public void setStaffname(String staffname) {
+		this.staffname = staffname;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getBasesalarysum() {
 		return basesalarysum;
 	}
@@ -78,7 +78,7 @@ public class Totalsalary {
 		this.basesalarysum = basesalarysum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getJobsum() {
 		return jobsum;
 	}
@@ -86,7 +86,7 @@ public class Totalsalary {
 		this.jobsum = jobsum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getRewardsum() {
 		return rewardsum;
 	}
@@ -94,7 +94,7 @@ public class Totalsalary {
 		this.rewardsum = rewardsum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getAssistancesum() {
 		return assistancesum;
 	}
@@ -102,7 +102,7 @@ public class Totalsalary {
 		this.assistancesum = assistancesum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getWagesum() {
 		return wagesum;
 	}
@@ -110,7 +110,7 @@ public class Totalsalary {
 		this.wagesum = wagesum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getDeductionsum() {
 		return deductionsum;
 	}
@@ -118,7 +118,7 @@ public class Totalsalary {
 		this.deductionsum = deductionsum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getTotalsum() {
 		return totalsum;
 	}
@@ -126,7 +126,7 @@ public class Totalsalary {
 		this.totalsum = totalsum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public Double getRealsum() {
 		return realsum;
 	}
@@ -134,7 +134,7 @@ public class Totalsalary {
 		this.realsum = realsum;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public String getAdminname() {
 		return adminname;
 	}
@@ -142,7 +142,7 @@ public class Totalsalary {
 		this.adminname = adminname;
 	}
 	
-	@Column( nullable=false)
+	@Column 
 	public String  getTimes() {
 		return times;
 	}

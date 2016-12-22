@@ -39,7 +39,7 @@ public class Assistance {
 		this.sid = sid;
 	}
 	
-	@Column(nullable=false)
+	@Column
 	public String getStaffname() {
 		return staffname;
 	}

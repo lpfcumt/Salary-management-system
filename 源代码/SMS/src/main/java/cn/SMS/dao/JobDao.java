@@ -8,4 +8,6 @@ public interface JobDao extends BaseDao<Job>{
 
 	List<Job> listJobsum(String jobname);
 
+	void deleteById(int jid);
+
 }

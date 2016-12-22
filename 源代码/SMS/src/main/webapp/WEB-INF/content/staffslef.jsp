@@ -19,7 +19,7 @@
         <div class="demo-tip icon-tip"></div>
         <div></div>
     </div>
-     <c:forEach items="${sessionScope.liststaff}" var="liststaff">
+     <c:forEach items="${sessionScope.liststaff1}" var="liststaff">
     <div style="margin:10px 0;"></div>
     <h3>员工照片</h3>
     <img src=""/><br/>
@@ -32,6 +32,10 @@
     <h3>员工所在部门&nbsp;&nbsp;&nbsp;&nbsp;:${liststaff.dept}</h3>
     <h3>员工职位&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:${liststaff.job}</h3>
     <h3>员工入职时间&nbsp;&nbsp;&nbsp;&nbsp;:${liststaff.jointime}</h3>
+    <h3>员工基本工资等级&nbsp;&nbsp;&nbsp;&nbsp;:${liststaff.basesalarycate}</h3>
+    <br><br><br>
+    <h3><a href="listAssistance1?sid=${liststaff.sid}">查看补助信息</a></h3>
     </c:forEach>
+    
 </body>
 </html>
